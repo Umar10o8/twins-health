@@ -2,7 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { L, useLang, Html } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG } from '../config.js';
-import { Pattern, Mark, BrandSymbol, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ZoneTabs, ProductVideo, usePageMeta } from '../components/common.jsx';
+import { Pattern, Mark, BrandSymbol, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
 import { Mockup, Twin } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
@@ -41,9 +41,7 @@ export function Home() {
       <div className="rv"><div className="stage"><Mockup /></div><p className="mock-cap">{t.mockCap}</p></div>
     </div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} />
-      <div className="grid g3 home-zones">{D.ZONES.map((zone, i) => <L className="card rv home-zone" to={`/solutions#zone-${zone.z}`} key={zone.z}>
-        <span className="ic"><Icon name={['heart-pulse', 'activity', 'network'][i]} /></span><h3>{zone.name}</h3><p>{zone.short}</p><span className="more">{t.learn} <Icon name="arrow-right" /></span>
-      </L>)}</div>
+      <div className="grid g3 solutions-grid">{D.SOL.slice(0, 3).map(s => <SolCard key={s.id} s={s} />)}</div>
       <p style={{ marginTop: '1.5rem' }}><L className="btn btn-outline" to="/solutions">{t.viewAll} <Arr /></L></p>
     </div></section>
     <section className="sec alt"><div className="wrap"><figure className="quote rv" style={{ margin: 0 }}>
@@ -84,7 +82,9 @@ export function Solutions() {
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2><p style={{ marginTop: '1rem', color: 'var(--muted)', fontSize: '1.05rem' }}>{t.platLede}</p><Ticks items={t.platTicks} /></div>
       <div className="rv"><div className="stage"><Mockup /></div><p className="mock-cap">{t.mockCap}</p></div>
     </div></section>
-    <section className="sec"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} /><ZoneTabs /></div></section>
+    <section className="sec"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} />
+      <div className="grid g3 solutions-grid">{D.SOL.map(s => <SolCard key={s.id} s={s} />)}</div>
+    </div></section>
     <Cta />
   </>;
 }
@@ -95,9 +95,9 @@ export function Solution() {
   const i = D.SOL.findIndex(s => s.id === id), s = D.SOL[i];
   usePageMeta(s ? s.name + t.brandSuffix : t.TITLES.notfound, s ? s.intro : t.META.notfound);
   if (!s) return <NotFound />;
-  const n = D.SOL.length, prev = D.SOL[(i + n - 1) % n], next = D.SOL[(i + 1) % n], z = D.ZONES.find(x => x.z === s.z);
+  const n = D.SOL.length, prev = D.SOL[(i + n - 1) % n], next = D.SOL[(i + 1) % n];
   return <>
-    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={'Saned ' + s.name} lede={s.intro}><span className="chip">{t.zone(z)}: {z.name}</span></Banner>
+    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={'Saned ' + s.name} lede={s.intro} />
     <ProductVideo videos={s.videos?.[lang] || []} label={lang === 'ar' ? 'مقاطع فيديو المنتج' : 'Product videos'} />
     <section className="sec"><div className="wrap sd"><div>
       <h2 className="h2" style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>{t.capT}</h2>
@@ -105,7 +105,7 @@ export function Solution() {
       <div className="card rv saned-card" style={{ marginTop: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}><img className="saned-logo" src={IMG.saned} alt="Saned Health" width="160" height="47" /><div><h3>{t.partT}</h3><p>{t.partP}</p></div></div>
       <div className="pn"><L className="card" to={'/solutions/' + prev.id}><small>{t.prev}</small><b>{prev.name}</b></L><L className="card" to={'/solutions/' + next.id}><small>{t.next}</small><b>{next.name}</b></L></div></div>
       <div className="side"><div className="card"><h2>{t.whoT}</h2><p style={{ color: 'var(--muted)' }}>{s.who}</p></div>
-        <div className="card"><h2>{t.alsoT(z)}</h2><ul>{D.SOL.filter(x => x.z === s.z && x.id !== s.id).map(x => <li key={x.id}><L to={'/solutions/' + x.id}>{x.name}</L></li>)}</ul></div>
+        <div className="card"><h2>{t.solutions}</h2><L className="link" to="/solutions">{t.viewAll} <Icon name="arrow-right" /></L></div>
         <L className="btn btn-primary" to={'/contact?product=' + s.id}>{t.demo} <Arr /></L></div>
     </div></section>
     <Cta />

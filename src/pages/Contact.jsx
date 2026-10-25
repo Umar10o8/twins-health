@@ -46,7 +46,7 @@ function DemoForm({ product }) {
       <div><label htmlFor="fPhone">{t.fPhone}<Req /></label><input id="fPhone" name="phone" type="tel" autoComplete="tel" dir="ltr" required {...inv('phone')} onInput={clear('phone')} /></div>
       <div className="full"><label htmlFor="fProduct">{t.fProduct}</label>
         <select id="fProduct" name="product" defaultValue={preset ? preset.name : t.notSure}>
-          {D.ZONES.map(z => <optgroup key={z.z} label={`${t.zone(z)}: ${z.name}`}>{D.SOL.filter(s => s.z === z.z).map(s => <option key={s.id} value={s.name}>{s.name}</option>)}</optgroup>)}
+          {D.SOL.map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
           <option value={t.notSure}>{t.notSure}</option>
         </select></div>
       <div className="full"><label htmlFor="fMsg">{t.fMsg}</label><textarea id="fMsg" name="message" placeholder={t.fMsgPh} /></div>

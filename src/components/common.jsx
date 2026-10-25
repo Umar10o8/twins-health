@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { L, useLang } from '../i18n.jsx';
 import { Icon, Arr, SOL_ICON } from '../icons.jsx';
@@ -66,7 +66,7 @@ export function Ticks({ items, style }) {
 }
 
 export function SolCard({ s }) {
-  const { t, D, lang } = useLang();
+  const { t, lang } = useLang();
   const previewVideo = typeof s.previewVideo === 'string' ? s.previewVideo : s.previewVideo?.[lang];
   const startPreview = e => {
     e.currentTarget.play().catch(error => {
@@ -76,7 +76,7 @@ export function SolCard({ s }) {
   const stopPreview = e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; };
   return <L className="card rv sol-card" to={'/solutions/' + s.id}>
     {previewVideo && <video className="sol-preview" src={previewVideo} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} onMouseEnter={startPreview} onMouseLeave={stopPreview} />}
-    <div className="top"><span className="ic"><Icon name={SOL_ICON[s.id]} /></span><span className="zbadge">{t.zone(D.ZONES.find(z => z.z === s.z))}</span></div><h3>{s.name}</h3><p>{s.short}</p><span className="more">{t.learn} <Icon name="arrow-right" /></span></L>;
+    <div className="top"><span className="ic"><Icon name={SOL_ICON[s.id]} /></span></div><h3>{s.name}</h3><p>{s.short}</p><span className="more">{t.learn} <Icon name="arrow-right" /></span></L>;
 }
 
 export function ProductVideo({ videos = [], label = 'Product videos' }) {
@@ -87,28 +87,4 @@ export function ProductVideo({ videos = [], label = 'Product videos' }) {
       <source src={video.src} type={video.type || 'video/mp4'} />
     </video>)}
   </div></section>;
-}
-
-export function ZoneTabs() {
-  const { t, D } = useLang();
-  const [sel, setSel] = useState(0);
-  const tabs = useRef([]);
-  const panels = useRef([]);
-  const select = i => { setSel(i); panels.current[i]?.querySelectorAll('.rv').forEach(e => e.classList.add('in')); };
-  const onKey = (e, i) => {
-    const rtl = document.documentElement.dir === 'rtl', n = D.ZONES.length;
-    let k = null;
-    if (e.key === 'ArrowRight') k = rtl ? i - 1 : i + 1;
-    if (e.key === 'ArrowLeft') k = rtl ? i + 1 : i - 1;
-    if (e.key === 'Home') k = 0;
-    if (e.key === 'End') k = n - 1;
-    if (k !== null) { e.preventDefault(); k = (k + n) % n; select(k); tabs.current[k].focus(); }
-  };
-  return <>
-    <div className="tabs" role="tablist" aria-label={t.solutions}>{D.ZONES.map((z, i) =>
-      <button key={z.z} ref={el => { tabs.current[i] = el; }} role="tab" id={'tab-' + z.z} aria-controls={'panel-' + z.z} aria-selected={i === sel} tabIndex={i === sel ? 0 : -1} onClick={() => select(i)} onKeyDown={e => onKey(e, i)}>
-        <span className="zl" aria-hidden="true">{z.zl}</span><span><span className="sr-only">{t.zone(z)}: </span>{z.name}</span></button>)}</div>
-    {D.ZONES.map((z, i) => <div key={z.z} ref={el => { panels.current[i] = el; }} className="tabpanel" role="tabpanel" id={'panel-' + z.z} aria-labelledby={'tab-' + z.z} hidden={i !== sel}>
-      <div className="grid g3">{D.SOL.filter(s => s.z === z.z).map(s => <SolCard key={s.id} s={s} />)}</div></div>)}
-  </>;
 }

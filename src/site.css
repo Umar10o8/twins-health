@@ -209,7 +209,11 @@ html[dir=rtl] a.card .more svg{transform:scaleX(-1)}
 .ic svg{width:1.45rem;height:1.45rem}
 a.card .ic{margin-bottom:0}
 .card .top{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
-.zbadge{font-size:.75rem;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem}
+.dd-inner.dd-flat{grid-template-columns:1fr}
+.dd-inner.dd-flat .ddcol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:2rem}
+.solutions-grid{align-items:stretch}
+@media (max-width:900px){.dd-inner.dd-flat .ddcol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.dd-inner.dd-flat .ddcol{grid-template-columns:minmax(0,1fr)}}
 
 .vm{display:grid;gap:1rem}
 .vm .card{border-inline-start:4px solid var(--teal)}
@@ -223,15 +227,6 @@ a.card .ic{margin-bottom:0}
 .ticks{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.75rem}
 .ticks li{display:flex;gap:.75rem;align-items:flex-start}
 .ticks li svg{width:1.3rem;height:1.3rem;color:var(--teal-d);flex-shrink:0;margin-top:.15rem}
-
-/* tabs */
-.tabs{display:flex;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid var(--line);margin-bottom:1.75rem}
-.tabs button{font:inherit;font-weight:600;font-size:.95rem;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:.75rem 1rem;cursor:pointer;margin-bottom:-1px;display:flex;align-items:center;gap:.5rem;text-align:start}
-.tabs button .zl{display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:6px;background:var(--tint2);color:var(--navy);font-size:.8rem}
-.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--teal)}
-.tabs button[aria-selected=true] .zl{background:var(--navy);color:#fff}
-.tabs button:hover{color:var(--ink)}
-.tabpanel[hidden]{display:none}
 
 /* platform */
 .platform .saned{height:3.5rem;width:auto;background:transparent;border:0;border-radius:0;padding:0;margin-bottom:1.25rem}

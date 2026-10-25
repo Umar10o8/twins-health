@@ -117,9 +117,8 @@ function Header() {
             <div className={'dd' + (key === 'solutions' ? ' active' : '')} {...ddProps('solutions')}>
               <button {...ddButton('solutions')} aria-controls="ddMenu"><span>{t.solutions}</span><Icon name="chevron-down" /></button>
               <div className={'dd-menu' + (open === 'solutions' ? ' open' : '')} id="ddMenu" style={{ top: megaTop + 'px' }} onMouseEnter={() => clearTimeout(timer.current)}>
-                <div className="dd-inner">
-                  {D.ZONES.map(z => <div className="ddcol" key={z.z}><h2>{t.zone(z)}</h2><p>{z.name}</p>
-                    {D.SOL.filter(s => s.z === z.z).map(s => <L key={s.id} to={'/solutions/' + s.id}><Icon name={SOL_ICON[s.id]} /><span>{s.name}</span></L>)}</div>)}
+                <div className="dd-inner dd-flat">
+                  <div className="ddcol">{D.SOL.map(s => <L key={s.id} to={'/solutions/' + s.id}><Icon name={SOL_ICON[s.id]} /><span>{s.name}</span></L>)}</div>
                   <div className="dd-all"><L className="link" to="/solutions">{t.viewAll} <Icon name="arrow-right" /></L></div>
                 </div>
               </div>
@@ -154,7 +153,7 @@ function Footer() {
             {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}
             <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/leadership">{t.leadership}</L></li><li><L to="/contact">{t.contact}</L></li>
           </ul></div>
-          <div><h2>{t.solutions}</h2><ul>{D.ZONES.map(z => <li key={z.z}><L to="/solutions">{t.zone(z)}: {z.name}</L></li>)}</ul></div>
+          <div><h2>{t.solutions}</h2><ul>{D.SOL.map(s => <li key={s.id}><L to={'/solutions/' + s.id}>{s.name}</L></li>)}</ul></div>
           <div><h2>{t.fcontact}</h2><ul><li>{t.address}</li><li><a href="tel:+966115001950" dir="ltr">+966 11 500 1950</a></li><li><a href="mailto:sales@sanedhealth.com">sales@sanedhealth.com</a></li></ul>
             <h2 style={{ marginTop: '1.25rem' }}>{t.follow}</h2>
             <p className="follow">
