@@ -3,7 +3,6 @@ import logoNavy from '../assets/logos/logo-navy.png';
 import logoInverse from '../assets/logos/logo-inverse.png';
 import logoArNavy from '../assets/logos/logo-ar-navy.png';
 import logoArInverse from '../assets/logos/logo-ar-inverse.png';
-import tMarkWhite from '../assets/logos/t-mark-white.svg';
 import skylinePhoto from '../assets/photos/skyline.jpg';
 import familyPhoto from '../assets/photos/family.jpg';
 import clinicianPhoto from '../assets/photos/clinician.jpg';
@@ -36,7 +35,6 @@ export const IMG = {
   p4: asset('mohamed-elmokadm.jpg'),
   p5: asset('abdulmohsen-albrag.jpg'),
   saned: asset('saned-health.webp'),
-  tMarkWhite,
   hero: skylinePhoto,
   family: familyPhoto,
   clinician: clinicianPhoto,

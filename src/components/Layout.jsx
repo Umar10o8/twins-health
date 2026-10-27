@@ -20,37 +20,34 @@ export function useNavKey() {
 const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } } };
 
 function UtilityBar() {
-  const { t, lang } = useLang();
-  const [fs, setFs] = useState(() => +store.get('th-fs') || 0);
+  const { t } = useLang();
   const [contrast, setContrast] = useState(() => store.get('th-contrast') === '1');
-  const { pathname, search } = useLocation();
-  const navigate = useNavigate();
   const root = document.documentElement;
 
-  useEffect(() => { if (fs) root.dataset.fs = fs; else delete root.dataset.fs; store.set('th-fs', fs); }, [fs]);
+  useEffect(() => { delete root.dataset.fs; store.set('th-fs', 0); }, []);
   useEffect(() => { if (contrast) root.dataset.contrast = 'high'; else delete root.dataset.contrast; store.set('th-contrast', contrast ? '1' : '0'); }, [contrast]);
-
-  const clampFs = v => setFs(Math.max(0, Math.min(2, v)));
-  const switchLang = () => {
-    const other = lang === 'ar' ? 'en' : 'ar';
-    const rest = pathname.slice(prefixFor(lang).length) || '/';
-    navigate((prefixFor(other) + (rest === '/' && prefixFor(other) ? '' : rest)) + search);
-  };
-  const tip = k => ({ 'aria-label': t[k], title: t[k] });
 
   return (
     <div className="utility" role="region" aria-label={t.toolsLabel}><div className="wrap">
       <p className="tag"><i aria-hidden="true" /><span>{t.tagline}</span></p>
       <div className="tools">
-        <button type="button" {...tip('fsDown')} dir="ltr" onClick={() => clampFs(fs - 1)}>A−</button>
-        <button type="button" {...tip('fsReset')} dir="ltr" onClick={() => clampFs(0)}>A</button>
-        <button type="button" {...tip('fsUp')} dir="ltr" onClick={() => clampFs(fs + 1)}>A+</button>
-        <button type="button" {...tip('contrast')} aria-pressed={contrast} onClick={() => setContrast(c => !c)}><Icon name="contrast" /></button>
-        <span className="sep" aria-hidden="true" />
-        <button type="button" className="lang" lang={lang === 'ar' ? 'en' : 'ar'} aria-label={t.switchAria} onClick={switchLang}>{t.switchLabel}</button>
+        <button type="button" aria-label={t.contrast} title={t.contrast} aria-pressed={contrast} onClick={() => setContrast(c => !c)}><Icon name="contrast" /></button>
       </div>
     </div></div>
   );
+}
+
+/* Same page in the other language */
+function LangSwitch() {
+  const { t, lang } = useLang();
+  const { pathname, search } = useLocation();
+  const navigate = useNavigate();
+  const switchLang = () => {
+    const other = lang === 'ar' ? 'en' : 'ar';
+    const rest = pathname.slice(prefixFor(lang).length) || '/';
+    navigate((prefixFor(other) + (rest === '/' && prefixFor(other) ? '' : rest)) + search);
+  };
+  return <button type="button" className="lang-btn" lang={lang === 'ar' ? 'en' : 'ar'} aria-label={t.switchAria} onClick={switchLang}><Icon name="languages" /><span>{t.switchLabel}</span></button>;
 }
 
 /* ---------- header ---------- */
@@ -127,6 +124,7 @@ function Header() {
             {nav('innovation', '/innovation', t.innovation)}
             {nav('contact', '/contact', t.contact)}
           </nav>
+          <LangSwitch />
           <L className="btn btn-primary" to="/contact">{t.demo}</L>
           <button className="menu-btn" type="button" aria-expanded={mOpen} aria-controls="mnav" onClick={() => setMOpen(o => !o)}><Icon name="menu" /><span>{mOpen ? t.close : t.menu}</span></button>
         </div>
@@ -165,9 +163,8 @@ function Footer() {
             <li><a href="mailto:sales@sanedhealth.com"><span className="f-ic"><Icon name="mail" /></span><span>sales@sanedhealth.com</span></a></li>
           </ul></div>
           <nav className="f-quick" aria-label={t.quick}><h2>{t.quick}</h2><ul>
-            <li><L to="/about">{t.about}</L></li>
             {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}
-            <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/leadership">{t.leadership}</L></li><li><L to="/contact">{t.contact}</L></li>
+            <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/contact">{t.contact}</L></li>
           </ul></nav>
         </div>
         <div className="legal"><span>{t.rights}</span><span className="v-note"><i aria-hidden="true" /><span>{t.vnote}</span></span><span className="lk"><a href="https://sanedhealth.com/privacy-policy" target="_blank" rel="noopener">{t.privacy}</a><a href="https://sanedhealth.com/terms-and-conditions" target="_blank" rel="noopener">{t.terms}</a></span></div>
