@@ -5,7 +5,7 @@ import CO from './data/company.js';
 import { dataEN, dataAR } from './data/data.js';
 import { DEFAULT_LANG } from './config.js';
 
-const DATA = { en: dataEN(), ar: dataAR() };
+export const DATA = { en: dataEN(), ar: dataAR() };
 export const prefixFor = l => (l === DEFAULT_LANG ? '' : '/' + l);
 
 export function makeLang(lang) {

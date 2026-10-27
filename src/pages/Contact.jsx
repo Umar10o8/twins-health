@@ -27,9 +27,11 @@ function DemoForm({ product }) {
     setInvalid(Object.fromEntries(bad.map(k => [k, true])));
     setSent(false);
     if (bad.length) { setMsg({ cls: ' err', text: F.please + F.join(bad.map(k => F[k])) + '.' }); form.elements[bad[0]].focus(); return; }
-    const B = F.body, body = B.name + ': ' + f.name + '\n' + B.org + ': ' + (f.org || '') + '\n' + B.email + ': ' + f.email + '\n' + B.phone + ': ' + f.phone + '\n' + B.sol + ': ' + f.product + '\n\n' + (f.message || '');
+    /* No solution field: a product passed from a solution page (?product=) still goes into the email */
+    const B = F.body, body = B.name + ': ' + f.name + '\n' + B.org + ': ' + (f.org || '') + '\n' + B.email + ': ' + f.email + '\n' + B.phone + ': ' + f.phone + (preset ? '\n' + B.sol + ': ' + preset.name : '') + '\n\n' + (f.message || '');
+    const subject = preset ? F.subject + preset.name : F.subject.replace(/:\s*$/, '');
     const a = document.createElement('a');
-    a.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(F.subject + f.product) + '&body=' + encodeURIComponent(body);
+    a.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
     setMsg({ cls: ' ok', text: F.ok }); setSent(true);
     setTimeout(() => sentRef.current?.focus());
@@ -44,11 +46,6 @@ function DemoForm({ product }) {
       <div><label htmlFor="fOrg">{t.fOrg}</label><input id="fOrg" name="org" autoComplete="organization" /></div>
       <div><label htmlFor="fEmail">{t.fEmail}<Req /></label><input id="fEmail" name="email" type="email" autoComplete="email" dir="ltr" required {...inv('email')} onInput={clear('email')} /></div>
       <div><label htmlFor="fPhone">{t.fPhone}<Req /></label><input id="fPhone" name="phone" type="tel" autoComplete="tel" dir="ltr" required {...inv('phone')} onInput={clear('phone')} /></div>
-      <div className="full"><label htmlFor="fProduct">{t.fProduct}</label>
-        <select id="fProduct" name="product" defaultValue={preset ? preset.name : t.notSure}>
-          {D.SOL.map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
-          <option value={t.notSure}>{t.notSure}</option>
-        </select></div>
       <div className="full"><label htmlFor="fMsg">{t.fMsg}</label><textarea id="fMsg" name="message" placeholder={t.fMsgPh} /></div>
       <div className="full"><label className="consent"><input type="checkbox" id="fConsent" name="consent" required {...inv('consent')} onChange={clear('consent')} /><span><Html html={t.consentHTML} /><Req /></span></label></div>
       <div className="full" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}><button className="btn btn-primary" type="submit">{t.submit} <Arr /></button><p className={'form-msg' + msg.cls} id="formMsg" role="status" aria-live="polite">{msg.text}</p></div>
@@ -62,7 +59,7 @@ export default function Contact() {
   const [params] = useSearchParams();
   usePageMeta(t.TITLES.contact, t.META.contact);
   return <>
-    <Banner crumbs={[[t.contact]]} h1={t.contactH1} lede={t.contactLede} />
+    <Banner crumbs={[[t.contact]]} h1={t.contactH1} sub={t.contactSub} lede={t.contactLede} />
     <section className="sec"><div className="wrap contact">
       <div className="cinfo"><h2 className="h2" style={{ fontSize: '1.35rem', marginBottom: '.25rem' }}>{t.reachT}</h2>
         <div className="card"><span className="ic"><Icon name="map-pin" /></span><div><small>{t.hq}</small><span>{t.address}</span></div></div>
