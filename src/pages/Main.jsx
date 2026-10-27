@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { L, useLang, Html, DATA } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
-import { IMG } from '../config.js';
+import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, BrandSymbol, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
 import { Mockup, Twin } from '../components/graphics.jsx';
 
@@ -55,7 +55,7 @@ export function Home() {
       <div className="ph"><img src={IMG.ao} alt={t.quoteBy} width="480" height="480" loading="lazy" /></div>
       <div><blockquote>{q(D.QUOTE)}</blockquote><cite><b>{t.quoteBy}</b>, {t.quoteRole}</cite></div>
     </figure></div></section>
-    <section className="sec alt home-sec"><div className="wrap"><SHead eyebrow={t.compEyebrow} h2={t.compTitle} /><div className="grid g4 badges">{t.badges.map((b, i) => <BadgeCard key={i} item={b} />)}</div></div></section>
+    <section className="sec alt home-sec"><div className="wrap"><SHead eyebrow={t.compEyebrow} h2={t.compTitle} /><div className="grid g4 badges">{t.badges.map((b, i) => <BadgeCard key={i} item={b} logo={BADGE_LOGOS[i]} />)}</div></div></section>
     <Cta />
   </>;
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { L, useLang, coLink, CO_KEYS } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
-import { IMG } from '../config.js';
+import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
 import { Twin } from '../components/graphics.jsx';
 import { NotFound } from './Main.jsx';
@@ -30,7 +30,7 @@ function AboutUs() {
     <section className="sec v2030"><Pattern /><div className="wrap" style={{ position: 'relative' }}><div className="split" style={{ alignItems: 'center' }}><div className="rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2" style={{ color: '#fff' }}>{a.v2030T}</h2></div><p className="rv co-light">{a.v2030}</p></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.mocT} /><div className="moc"><div className="big rv"><b>42</b><span>{a.mocBig}</span></div><div className="card rv co-text"><p>{a.moc}</p></div></div></div></section>
     <section className="sec alt"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.aiT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{a.ai}</p></div><div className="rv"><Twin /></div></div></section>
-    <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.qT} /><div className="grid g4 badges">{a.q.map((b, i) => <BadgeCard key={i} item={b} />)}</div></div></section>
+    <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.qT} /><div className="grid g4 badges">{a.q.map((b, i) => <BadgeCard key={i} item={b} logo={BADGE_LOGOS[i]} />)}</div></div></section>
     <section className="cta co-cta"><div className="wrap"><div><h2>{a.ctaT}</h2><p>{a.ctaP}</p><L className="btn btn-primary" to="/contact">{a.ctaBtn} <Arr /></L></div>
       <address className="co-addr"><a href="mailto:sales@sanedhealth.com"><Icon name="mail" /><span>sales@sanedhealth.com</span></a><a href="tel:+966115001950"><Icon name="phone" /><span dir="ltr">+966 11 500 1950</span></a><span><Icon name="map-pin" /><span>{a.address}</span></span></address></div></section>
   </>;
