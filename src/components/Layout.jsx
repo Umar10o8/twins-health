@@ -152,10 +152,9 @@ function Footer() {
             <p className="fnote">{t.fdesc}</p>
             <h2>{t.follow}</h2>
             <p className="follow">
-              <a href="https://www.linkedin.com/company/sanedhealth/" target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
-              <a href="https://x.com/SanedHealth/" target="_blank" rel="noopener" aria-label="X"><Icon name="twitter" /></a>
-              <a href="https://www.youtube.com/@sanedhealth" target="_blank" rel="noopener" aria-label="YouTube"><Icon name="youtube" /></a>
-              <a href="https://www.instagram.com/sanedhealth/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>
+              <a href="https://www.linkedin.com/company/twinshealth/" target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+              <a href="https://x.com/twinshealthsa" target="_blank" rel="noopener" aria-label="X"><Icon name="twitter" /></a>
+              <a href="https://www.instagram.com/twinshealthsa/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>
             </p>
           </div>
           <div className="f-contact"><h2>{t.fcontact}</h2><ul>

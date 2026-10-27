@@ -5,7 +5,7 @@ en:{
  tagline:"An Obeikan Investment Group company",fsDown:"Decrease text size",fsReset:"Reset text size",fsUp:"Increase text size",contrast:"High contrast",toolsLabel:"Accessibility and language",
  zone:z=>"Zone "+z.zl,viewAll:"View all 17 solutions",learn:"Learn more",
  fdesc:"Twins Health is the healthcare technology company of Obeikan Investment Group, driving digital transformation in healthcare through Saned Health.",
- quick:"Quick links",fcontact:"Contact us",follow:"Follow Saned Health",address:"8452 Hawtat Bani Tamim St, Al Olaya, Riyadh 12333, Saudi Arabia",
+ quick:"Quick links",fcontact:"Contact us",follow:"Follow Twins Health",address:"8452 Hawtat Bani Tamim St, Al Olaya, Riyadh 12333, Saudi Arabia",
  rights:"© 2026 Twins Health. All rights reserved.",privacy:"Privacy policy",terms:"Terms and conditions",vnote:"Supporting Saudi Vision 2030",
  // home
  heroKicker:"The healthcare company of Obeikan Investment Group",
@@ -92,7 +92,7 @@ ar:{
  tagline:"إحدى شركات مجموعة العبيكان للاستثمار",fsDown:"تصغير حجم الخط",fsReset:"إعادة حجم الخط",fsUp:"تكبير حجم الخط",contrast:"تباين عالٍ",toolsLabel:"إعدادات الوصول واللغة",
  zone:z=>"المسار "+z.zl,viewAll:"استعرض الحلول الـ17",learn:"اعرف المزيد",
  fdesc:"توينز هيلث هي شركة تابعة لمجموعة العبيكان للاستثمار، مهتمة في تمكين التحول الرقمي في القطاع الصحي عبر منصتها السحابية، منصة ساند للصحة.",
- quick:"روابط سريعة",fcontact:"تواصل معنا",follow:"تابع ساند للصحة",address:"8452 شارع هوطة بني تميم، العليا، الرياض 12333، المملكة العربية السعودية",
+ quick:"روابط سريعة",fcontact:"تواصل معنا",follow:"تابع توينز هيلث",address:"8452 شارع هوطة بني تميم، العليا، الرياض 12333، المملكة العربية السعودية",
  rights:"© 2026 توينز هيلث. جميع الحقوق محفوظة.",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام",vnote:"دعمًا لرؤية المملكة 2030",
  heroKicker:"شركة الرعاية الصحية التابعة لمجموعة العبيكان للاستثمار",
  heroH1:"رعاية صحية متصلة، <span>من المملكة إلى العالم</span>",heroSub:"Connected care, from the Kingdom to the world",
