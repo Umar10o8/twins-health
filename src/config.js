@@ -1,7 +1,9 @@
 /* Site-wide settings. SITE_URL is used for canonical and hreflang links: set it to the production domain. */
 import logoNavy from '../assets/logos/logo-navy.png';
 import logoInverse from '../assets/logos/logo-inverse.png';
-import logoMark from '../assets/logo-mark.svg';
+import logoArNavy from '../assets/logos/logo-ar-navy.png';
+import logoArInverse from '../assets/logos/logo-ar-inverse.png';
+import tMarkWhite from '../assets/logos/t-mark-white.svg';
 import skylinePhoto from '../assets/photos/skyline.jpg';
 import familyPhoto from '../assets/photos/family.jpg';
 import clinicianPhoto from '../assets/photos/clinician.jpg';
@@ -20,6 +22,11 @@ import zatcaLogo from '../assets/badges/zatca.png';
 
 export const SITE_URL = 'https://www.example.com';
 export const DEFAULT_LANG = 'en';
+/* Wordmark per language: navy for light backgrounds, white for the footer */
+export const LOGOS = {
+  en: { navy: logoNavy, white: logoInverse, w: 296, h: 82 },
+  ar: { navy: logoArNavy, white: logoArInverse, w: 598, h: 200 },
+};
 export const asset = f => import.meta.env.BASE_URL + 'assets/' + f;
 export const IMG = {
   ao: asset('abdallah-obeikan.jpg'),
@@ -29,9 +36,7 @@ export const IMG = {
   p4: asset('mohamed-elmokadm.jpg'),
   p5: asset('abdulmohsen-albrag.jpg'),
   saned: asset('saned-health.webp'),
-  logo: logoNavy,
-  logoWhite: logoInverse,
-  logoMark,
+  tMarkWhite,
   hero: skylinePhoto,
   family: familyPhoto,
   clinician: clinicianPhoto,

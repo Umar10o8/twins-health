@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { L, useLang, coLinks, CO_KEYS, prefixFor } from '../i18n.jsx';
 import { Icon, SOL_ICON } from '../icons.jsx';
-import { IMG } from '../config.js';
+import { IMG, LOGOS } from '../config.js';
 
 const CO_ICON = { about: 'building-2', team: 'users', leadership: 'briefcase', history: 'route' };
 
@@ -57,7 +57,8 @@ function UtilityBar() {
 const canHover = typeof matchMedia !== 'undefined' && matchMedia('(hover:hover)').matches;
 
 function Header() {
-  const { t, D, co } = useLang();
+  const { t, D, co, lang } = useLang();
+  const logo = LOGOS[lang] || LOGOS.en;
   const { key, coKey } = useNavKey();
   const inAboutMenu = ['about', 'team', 'leadership', 'history'].includes(key);
   const { pathname } = useLocation();
@@ -103,8 +104,8 @@ function Header() {
       <div className="wrap">
         <div className="bar">
           <L className="brand" to="/" aria-label={t.brandAria} title={t.brandAria}>
-            <img className="logo-light" src={IMG.logo} alt={t.logoAlt} width="296" height="82" />
-            <img className="logo-dark" src={IMG.logoWhite} alt={t.logoAlt} width="296" height="82" />
+            <img className="logo-light" src={logo.navy} alt={t.logoAlt} width={logo.w} height={logo.h} />
+            <img className="logo-dark" src={logo.white} alt={t.logoAlt} width={logo.w} height={logo.h} />
           </L>
           <nav className="main" aria-label="Main">
             {nav('home', '/', t.home)}
@@ -142,13 +143,14 @@ function Header() {
 
 /* ---------- footer ---------- */
 function Footer() {
-  const { t, co } = useLang();
+  const { t, co, lang } = useLang();
+  const logo = LOGOS[lang] || LOGOS.en;
   return (
     <footer>
       <div className="wrap">
         <div className="f-top">
           <div className="f-brand">
-            <img className="flogo" src={IMG.logoWhite} alt={t.logoAlt} width="296" height="82" />
+            <img className="flogo" src={logo.white} alt={t.logoAlt} width={logo.w} height={logo.h} />
             <p className="fnote">{t.fdesc}</p>
             <h2>{t.follow}</h2>
             <p className="follow">
