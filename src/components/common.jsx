@@ -5,8 +5,8 @@ import { Icon, Arr, SOL_ICON } from '../icons.jsx';
 import { IMG, SITE_URL } from '../config.js';
 
 export const Pattern = () => <div className="pattern" aria-hidden="true" />;
-export const Mark = ({ cls = '' }) => <div className={'mark ' + cls} aria-hidden="true"><i className="k1" /><i className="k2" /><i className="k3" /></div>;
-export const BrandSymbol = () => <div className="brand-symbol" aria-hidden="true"><img src={IMG.logoMark} alt="" /></div>;
+export const Mark = () => <img className="mark" src={IMG.tMarkWhite} alt="" aria-hidden="true" width="44" height="97" />;
+export const BrandSymbol = () => <div className="brand-symbol" aria-hidden="true"><img src={IMG.tMarkWhite} alt="" width="44" height="97" /></div>;
 
 /* Per-route <title>, meta description, canonical and hreflang */
 export function usePageMeta(title, desc) {
