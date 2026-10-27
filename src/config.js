@@ -13,6 +13,10 @@ import scrubsPhoto from '../assets/photos/scrubs.jpg';
 import overheadPhoto from '../assets/photos/overhead.jpg';
 import brandTabletPhoto from '../assets/photos/brand-tablet.jpg';
 import brandCardPhoto from '../assets/photos/brand-card.jpg';
+import nphiesLogo from '../assets/badges/nphies.png';
+import isoLogo from '../assets/badges/iso-13485.png';
+import hipaaLogo from '../assets/badges/hipaa.png';
+import zatcaLogo from '../assets/badges/zatca.png';
 
 export const SITE_URL = 'https://www.example.com';
 export const DEFAULT_LANG = 'en';
@@ -40,3 +44,11 @@ export const IMG = {
   brandTablet: brandTabletPhoto,
   brandCard: brandCardPhoto,
 };
+
+/* Compliance logos, in the same order as the badge lists in strings.js and company.js: NPHIES, ISO, HIPAA, ZATCA */
+export const BADGE_LOGOS = [
+  { src: nphiesLogo, w: 480, h: 152 },
+  { src: isoLogo, w: 160, h: 160 },
+  { src: hipaaLogo, w: 300, h: 160 },
+  { src: zatcaLogo, w: 136, h: 160 },
+];

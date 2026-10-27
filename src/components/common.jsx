@@ -55,8 +55,10 @@ export function Cta() {
 export const IconCard = ({ item: [ic, h, p], className = '' }) => (
   <div className={'card rv' + (className ? ' ' + className : '')}><span className="ic"><Icon name={ic} /></span><h3>{h}</h3><p>{p}</p></div>
 );
-export const BadgeCard = ({ item: [ic, h, p] }) => (
-  <div className="card rv"><span className="ic"><Icon name={ic} /></span><div><h3>{h}</h3><p>{p}</p></div></div>
+export const BadgeCard = ({ item: [ic, h, p], logo }) => (
+  <div className={'card rv' + (logo ? ' has-logo' : '')}>{logo
+    ? <span className="badge-logo"><img src={logo.src} alt="" width={logo.w} height={logo.h} loading="lazy" /></span>
+    : <span className="ic"><Icon name={ic} /></span>}<div><h3>{h}</h3><p>{p}</p></div></div>
 );
 
 export function VisionMission({ vT, v, mT, m, className = '' }) {

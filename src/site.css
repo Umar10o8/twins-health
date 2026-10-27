@@ -482,6 +482,9 @@ html[dir=rtl] .home-quote .quote blockquote{letter-spacing:0;line-height:1.7}
 .badges .card{display:flex;gap:var(--s4);align-items:flex-start}
 .badges .card .ic{margin:0}
 .badges h3{font-size:var(--fs-body)}
+.badges .card.has-logo{flex-direction:column;gap:var(--s5)}
+.badge-logo{display:flex;align-items:center;height:3.5rem}
+.badge-logo img{width:auto;height:auto;max-width:100%;max-height:100%}
 
 /* ---------- call to action band ---------- */
 .cta{position:relative;background:var(--navy);color:#fff;overflow:hidden}
