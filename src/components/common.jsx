@@ -6,7 +6,7 @@ import { IMG, SITE_URL } from '../config.js';
 
 export const Pattern = () => <div className="pattern" aria-hidden="true" />;
 export const Mark = ({ cls = '' }) => <div className={'mark ' + cls} aria-hidden="true"><i className="k1" /><i className="k2" /><i className="k3" /></div>;
-export const BrandSymbol = () => <div className="brand-symbol" aria-hidden="true"><img src={IMG.logoWhiteHiRes} alt="" /></div>;
+export const BrandSymbol = () => <div className="brand-symbol" aria-hidden="true"><img src={IMG.logoMark} alt="" /></div>;
 
 /* Per-route <title>, meta description, canonical and hreflang */
 export function usePageMeta(title, desc) {
@@ -27,8 +27,10 @@ export function usePageMeta(title, desc) {
   }, [title, desc, pathname, prefix]);
 }
 
-export function Banner({ crumbs, h1, lede, children }) {
-  const { t } = useLang();
+/* sub: the heading in the other language, shown under the h1 */
+export function Banner({ crumbs, h1, sub, lede, children }) {
+  const { t, lang } = useLang();
+  const other = lang === 'ar' ? 'en' : 'ar';
   return (
     <section className="banner"><Pattern /><div className="wrap"><div>
       <nav className="crumbs" aria-label="Breadcrumb"><ol><li><L to="/">{t.home}</L></li>
@@ -36,7 +38,7 @@ export function Banner({ crumbs, h1, lede, children }) {
           ? <li key={i} aria-current="page">{c[0]}</li>
           : <li key={i}><L to={c[1]}>{c[0]}</L></li>)}
       </ol></nav>
-      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{lede && <p className="lede">{lede}</p>}{children}</div><Mark /></div></section>
+      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{sub && <p className="sub" lang={other} dir={other === 'ar' ? 'rtl' : 'ltr'}>{sub}</p>}{lede && <p className="lede">{lede}</p>}{children}</div><Mark /></div></section>
   );
 }
 
@@ -65,8 +67,9 @@ export function Ticks({ items, style }) {
   return <ul className="ticks" style={style}>{items.map((x, i) => <li key={i}><Icon name="circle-check" /><span>{x}</span></li>)}</ul>;
 }
 
-export function SolCard({ s }) {
-  const { t, lang } = useLang();
+export function SolCard({ s, image }) {
+  const { t, D, lang } = useLang();
+  const zone = D.ZONES.find(z => z.z === s.z);
   const previewVideo = typeof s.previewVideo === 'string' ? s.previewVideo : s.previewVideo?.[lang];
   const startPreview = e => {
     e.currentTarget.play().catch(error => {
@@ -75,9 +78,11 @@ export function SolCard({ s }) {
   };
   const stopPreview = e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; };
   return <L className="card rv sol-card" to={'/solutions/' + s.id}>
+    {image && <img className="sol-image" src={image} alt="" loading="lazy" />}
     {previewVideo && <video className="sol-preview" src={previewVideo} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} onMouseEnter={startPreview} onMouseLeave={stopPreview} />}
-    <div className="top"><span className="ic"><Icon name={SOL_ICON[s.id]} /></span></div><h3>{s.name}</h3><p>{s.short}</p><span className="more">{t.learn} <Icon name="arrow-right" /></span></L>;
+    <div className="top"><span className="ic"><Icon name={SOL_ICON[s.id]} /></span>{zone && <span className="zbadge">{t.zone(zone)}</span>}</div><h3>{s.name}</h3><p>{s.short}</p><span className="more">{t.learn} <Icon name="arrow-right" /></span></L>;
 }
+
 
 export function ProductVideo({ videos = [], label = 'Product videos' }) {
   const items = videos.filter(video => video && typeof video.src === 'string' && video.src.trim());

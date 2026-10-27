@@ -21,7 +21,7 @@ function AboutUs() {
     <CoBanner label={c.aboutUs} h1={a.h1} sub={a.sub} />
     <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}>
       <div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.whoT}</h2>{a.who.map((p, i) => i ? <p key={i}>{p}</p> : <p key={i} className="lead" style={{ marginTop: '1rem' }}>{p}</p>)}</div>
-      <div className="rv co-art" aria-hidden="true"><Mark cls="lg" /></div>
+      <div className="rv co-art"><img className="co-photo" src={IMG.clinician} alt="" width="843" height="562" /></div>
     </div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.doT} /><div className="grid g3">{a.do.map((d, i) => <IconCard key={i} item={d} className="co-cap" />)}</div></div></section>
     <section className="glance"><div className="wrap"><h2 className="sr-only">{a.glanceT}</h2><div className="glance-grid rv">{a.glance.map((g, i) => <div className="stat" key={i}><b>{g[0]}</b><span>{g[1]}</span></div>)}</div></div></section>
@@ -54,7 +54,7 @@ function Management() {
   return <>
     <CoBanner label={c.mgmtL} h1={g.h1} sub={g.sub} />
     <section className="sec"><div className="wrap"><p className="lead co-intro rv">{g.intro}</p></div></section>
-    <section className="sec alt"><div className="wrap"><SHead eyebrow={c.mgmtL} h2={g.groupT} /><div className="card ceo rv" style={{ padding: '2rem' }}><div className="ph"><img src={IMG.ao} alt={g.ceoName} width="480" height="480" /></div><div><h3 style={{ fontSize: '1.75rem' }}>{g.ceoName}</h3><p className="role">{g.ceoRole}</p><blockquote>{q(g.quote)}</blockquote></div></div></div></section>
+    <section className="sec alt"><div className="wrap"><SHead eyebrow={c.mgmtL} h2={g.groupT} /><div className="card ceo rv"><div className="ph"><img src={IMG.ao} alt={g.ceoName} width="480" height="480" /></div><div><h3 style={{ fontSize: '1.75rem' }}>{g.ceoName}</h3><p className="role">{g.ceoRole}</p><blockquote>{q(g.quote)}</blockquote></div></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.mgmtL} h2={g.teamT} /><div className="grid g5">{g.team.map((p, i) => <div className={'person card rv' + (i ? '' : ' lead')} key={p[0]}><div className="ph"><img src={IMG[p[2]]} alt={p[0]} width="480" height="480" loading="lazy" /></div><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div></div></section>
     <Cta />
   </>;
@@ -79,7 +79,6 @@ function Milestone({ m, i, first }) {
 export function History() {
   const { co: c } = useLang(), j = c.journey, years = [...new Set(j.ms.map(m => m[0]))];
   usePageMeta(c.TITLES.history, c.META.history);
-  const milestones = [...j.ms, ['today', j.todayT, j.todayT, j.today]];
   const jump = (e, y) => {
     e.preventDefault();
     const el = document.getElementById('ms-' + y); if (!el) return;
@@ -89,7 +88,8 @@ export function History() {
     <CoBanner label={c.journeyL} h1={j.h1} sub={j.sub} />
     <section className="sec jr"><div className="wrap">
       <nav className="jr-years" aria-label={c.jumpTo}><span>{c.jumpTo}</span>{years.filter(y => y !== 'today').map(y => <a key={y} href={'#ms-' + y} dir="ltr" onClick={e => jump(e, y)}>{y}</a>)}</nav>
-      <ol className="jr-line">{milestones.map((m, i) => <Milestone key={i} m={m} i={i} first={j.ms.findIndex(x => x[0] === m[0]) === i} />)}</ol>
+      <ol className="jr-line">{j.ms.map((m, i) => <Milestone key={i} m={m} i={i} first={j.ms.findIndex(x => x[0] === m[0]) === i} />)}</ol>
+      <div className="jr-today rv"><Pattern /><div><p className="eyebrow">{c.journeyL}</p><h2>{j.todayT}</h2><p>{j.today}</p></div><Mark /></div>
     </div></section>
     <Cta />
   </>;
