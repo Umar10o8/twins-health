@@ -38,11 +38,11 @@ export function Home() {
         <p style={{ marginTop: '1.5rem' }}><L className="link" to="/about">{t.aboutLink} <Icon name="arrow-right" /></L></p></div>
     </div></section>
     <section className="sec tint home-sec home-vm"><div className="wrap"><VisionMission className="home-vm-grid" vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} /></div></section>
-    <section className="sec alt home-sec platform"><div className="wrap split" style={{ alignItems: 'center' }}>
+    <section className="sec alt home-sec platform"><div className="wrap split home-platform-grid">
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2>
         <p className="section-lede">{t.platLede}</p><Ticks items={t.platTicks} />
         <p className="actions"><L className="btn btn-outline" to="/solutions">{t.learn} <Arr /></L></p></div>
-      <div className="rv platform-visual"><img className="platform-photo" src={IMG.elder} alt="" width="1673" height="1000" loading="lazy" /><div className="stage"><Mockup /></div><p className="mock-cap">{t.mockCap}</p></div>
+      <div className="rv platform-visual"><img className="platform-photo" src={IMG.elder} alt="" width="1673" height="1000" loading="lazy" /></div>
     </div></section>
     <section className="sec home-sec home-sol"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} />
       <div className="grid g3 solutions-grid">{D.SOL.slice(0, 3).map((s, i) => <SolCard key={s.id} s={s} image={[IMG.phone, IMG.watch, IMG.scrubs][i]} />)}</div>
@@ -65,9 +65,12 @@ export function About() {
   useMeta('about');
   return <>
     <Banner crumbs={[[t.about]]} h1={t.aboutH1} sub={t.aboutSub} lede={t.aboutLede} />
-    <section className="sec"><div className="wrap split">
-      <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.storyP1}</p><p>{t.storyP2}</p></div>
-      <VisionMission vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} />
+    <section className="sec"><div className="wrap">
+      <div className="split story-grid">
+        <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.storyP1}</p><p>{t.storyP2}</p></div>
+        <div className="rv story-photo"><img src={IMG.brandCard} alt="" width="1000" height="1801" loading="lazy" /></div>
+      </div>
+      <VisionMission className="co-vm story-vm" vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} />
     </div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={t.valuesEyebrow} h2={t.valuesT} /><div className="grid g5">{D.VALUES.map((v, i) => <IconCard key={i} item={[t.valueIcons[i], v[0], v[1]]} />)}</div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={t.journeyEyebrow} h2={t.journeyT} />

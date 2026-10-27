@@ -10,6 +10,9 @@ import elderPhoto from '../assets/photos/elder.jpg';
 import phonePhoto from '../assets/photos/phone.jpg';
 import watchPhoto from '../assets/photos/watch.jpg';
 import scrubsPhoto from '../assets/photos/scrubs.jpg';
+import overheadPhoto from '../assets/photos/overhead.jpg';
+import brandTabletPhoto from '../assets/photos/brand-tablet.jpg';
+import brandCardPhoto from '../assets/photos/brand-card.jpg';
 
 export const SITE_URL = 'https://www.example.com';
 export const DEFAULT_LANG = 'en';
@@ -33,4 +36,7 @@ export const IMG = {
   phone: phonePhoto,
   watch: watchPhoto,
   scrubs: scrubsPhoto,
+  overhead: overheadPhoto,
+  brandTablet: brandTabletPhoto,
+  brandCard: brandCardPhoto,
 };
