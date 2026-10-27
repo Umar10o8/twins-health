@@ -146,22 +146,31 @@ function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <div className="fgrid">
-          <div><img className="flogo" src={IMG.logoWhite} alt={t.logoAlt} width="296" height="82" /><p className="fnote">{t.fdesc}</p></div>
-          <div><h2>{t.quick}</h2><ul>
-            <li><L to="/about">{t.about}</L></li>
-            {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}
-            <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/leadership">{t.leadership}</L></li><li><L to="/contact">{t.contact}</L></li>
-          </ul></div>
-          <div><h2>{t.solutions}</h2><ul>{D.SOL.map(s => <li key={s.id}><L to={'/solutions/' + s.id}>{s.name}</L></li>)}</ul></div>
-          <div><h2>{t.fcontact}</h2><ul><li>{t.address}</li><li><a href="tel:+966115001950" dir="ltr">+966 11 500 1950</a></li><li><a href="mailto:sales@sanedhealth.com">sales@sanedhealth.com</a></li></ul>
-            <h2 style={{ marginTop: '1.25rem' }}>{t.follow}</h2>
+        <div className="f-top">
+          <div className="f-brand">
+            <img className="flogo" src={IMG.logoWhite} alt={t.logoAlt} width="296" height="82" />
+            <p className="fnote">{t.fdesc}</p>
+            <h2>{t.follow}</h2>
             <p className="follow">
               <a href="https://www.linkedin.com/company/sanedhealth/" target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
               <a href="https://x.com/SanedHealth/" target="_blank" rel="noopener" aria-label="X"><Icon name="twitter" /></a>
               <a href="https://www.youtube.com/@sanedhealth" target="_blank" rel="noopener" aria-label="YouTube"><Icon name="youtube" /></a>
               <a href="https://www.instagram.com/sanedhealth/" target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" /></a>
-            </p></div>
+            </p>
+          </div>
+          <div className="f-contact"><h2>{t.fcontact}</h2><ul>
+            <li><span className="f-ic"><Icon name="map-pin" /></span><span>{t.address}</span></li>
+            <li><a href="tel:+966115001950"><span className="f-ic"><Icon name="phone" /></span><span dir="ltr">+966 11 500 1950</span></a></li>
+            <li><a href="mailto:sales@sanedhealth.com"><span className="f-ic"><Icon name="mail" /></span><span>sales@sanedhealth.com</span></a></li>
+          </ul></div>
+        </div>
+        <div className="fgrid">
+          <nav aria-label={t.quick}><h2>{t.quick}</h2><ul>
+            <li><L to="/about">{t.about}</L></li>
+            {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}
+            <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/leadership">{t.leadership}</L></li><li><L to="/contact">{t.contact}</L></li>
+          </ul></nav>
+          <nav className="f-sol" aria-label={t.solutions}><h2>{t.solutions}</h2><ul>{D.SOL.map(s => <li key={s.id}><L to={'/solutions/' + s.id}>{s.name}</L></li>)}</ul></nav>
         </div>
         <div className="legal"><span>{t.rights}</span><span className="v-note"><i aria-hidden="true" /><span>{t.vnote}</span></span><span className="lk"><a href="https://sanedhealth.com/privacy-policy" target="_blank" rel="noopener">{t.privacy}</a><a href="https://sanedhealth.com/terms-and-conditions" target="_blank" rel="noopener">{t.terms}</a></span></div>
       </div>

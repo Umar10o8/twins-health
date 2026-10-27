@@ -422,27 +422,12 @@ html[dir=rtl] .kpi em{text-align:right}
   html[dir=rtl] .phone{left:auto;right:50%;transform:translateX(50%)}
 }
 
-/* home: layered product composition — photo base, dashboard over its lower edge,
-   phone standing beside the dashboard so it never covers data */
-.platform-visual{--phone-w:10.5rem;--inset:clamp(1rem,.5rem + 1.5vw,1.75rem);position:relative;isolation:isolate}
-.platform-photo{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 35%;border-radius:var(--r-lg)}
-/* .platform prefix outranks the generic html[dir=rtl] .stage padding */
-.platform .platform-visual .stage{background:none;border:0;border-radius:0;box-shadow:none;padding:0;margin:-8rem 0 0}
-.platform-visual .mock-wrap{position:static}
-.platform-visual .win{width:calc(100% - var(--inset) - var(--phone-w) + .75rem);margin-inline-start:var(--inset);box-shadow:var(--shadow);border-radius:var(--r)}
-.platform-visual .mock-wrap .phone{left:auto;right:auto;transform:none;inset-inline-end:0;top:auto;bottom:3.25rem;width:var(--phone-w);margin:0}
-.platform-visual .mock-cap{margin-top:var(--s4);padding-inline-start:var(--inset)}
-/* below 1100px the section stacks, giving the composition the full width */
-@media (max-width:1100px){
-  .platform.home-sec .split{grid-template-columns:minmax(0,1fr);gap:var(--s7)}
-  .platform-photo{aspect-ratio:16/9}
-}
-/* on phones the dashboard takes the full width and the phone follows it */
-@media (max-width:640px){
-  .platform-photo{aspect-ratio:4/3}
-  .platform .platform-visual .stage{margin-top:-4rem}
-  .platform-visual .win{width:auto;margin-inline:var(--inset)}
-  .platform-visual .mock-wrap .phone{position:relative;inset:auto;margin:var(--s5) auto 0}
+/* home: Saned photo; on desktop it takes its height from the text column so the edges line up */
+.home-platform-grid{align-items:stretch}
+.platform-visual{position:relative;min-height:24rem;border-radius:var(--r-lg);overflow:hidden}
+.platform-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+@media (max-width:900px){
+  .platform-visual{min-height:0;aspect-ratio:16/10}
 }
 @media (max-width:600px){.win-body{grid-template-columns:minmax(0,1fr)}.win-side{display:none}.kpi b{font-size:1rem}}
 
@@ -457,7 +442,7 @@ html[dir=rtl] .kpi em{text-align:right}
 .home-sol .sol-card{background:none;border:0;border-radius:0;box-shadow:none;padding:0;overflow:visible;gap:var(--s3)}
 .home-sol .sol-card:hover{transform:none;box-shadow:none}
 .home-sol .sol-card .top{display:none}
-.home-sol .sol-image{width:100%;margin:0 0 var(--s3);aspect-ratio:4/5;border-radius:var(--r-lg);transition:transform .6s var(--ease),filter .3s var(--ease)}
+.home-sol .sol-image{width:100%;margin:0 0 var(--s3);aspect-ratio:4/3;border-radius:var(--r-lg);transition:transform .6s var(--ease),filter .3s var(--ease)}
 .home-sol .sol-card:hover .sol-image{filter:brightness(1.06)}
 .home-sol .sol-card h3{font-size:clamp(1.25rem,1.1rem + .4vw,1.5rem);font-weight:500;letter-spacing:-.02em;line-height:1.25;margin:0;transition:color .18s}
 .home-sol .sol-card:hover h3{color:var(--teal-d)}
@@ -613,6 +598,13 @@ html[dir=rtl] .vv .arr svg{transform:scaleX(-1)}
 .co-art{display:grid;place-items:center;min-height:16rem;background:var(--tint);border-radius:var(--r-lg);overflow:hidden}
 .co-art:has(.co-photo){background:transparent;min-height:0}
 .co-art .co-photo{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-lg)}
+.co-art .team-photo{object-position:50% 64%}
+/* about: story text beside the brand photo, which takes its height from the text; vision and mission below */
+.story-grid{align-items:stretch}
+.story-photo{position:relative;min-height:22rem;border-radius:var(--r-lg);overflow:hidden;background:#BEE8E9}
+.story-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.story-vm{margin-top:clamp(2.5rem,2rem + 2vw,4rem)}
+@media (max-width:900px){.story-photo{min-height:0;aspect-ratio:4/3}}
 .co-cap h3{font-size:var(--fs-h3)}
 .glance{padding:0 0 var(--s4)}
 .glance-grid{background:var(--on-navy-line);border-color:var(--navy)}
@@ -636,8 +628,9 @@ html[dir=rtl] .vv .arr svg{transform:scaleX(-1)}
 .jr-today > div:not(.pattern){position:relative}
 .jr-today h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2.125rem);font-weight:500;letter-spacing:-.025em}
 .jr-today p:last-child{margin-top:var(--s4);color:var(--on-navy-soft);font-size:var(--fs-lead);line-height:1.7;max-width:var(--measure)}
-.jr-today .mark{width:6.5rem;position:relative}
-@media (max-width:860px){.jr-today{grid-template-columns:minmax(0,1fr)}.jr-today .mark{display:none}}
+.jr-today{grid-template-columns:minmax(0,1fr) minmax(0,20rem)}
+.jr-today-photo{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
+@media (max-width:860px){.jr-today{grid-template-columns:minmax(0,1fr)}.jr-today-photo{aspect-ratio:16/10;object-position:50% 25%}}
 .co-text p,p.co-text{color:var(--ink);font-size:var(--fs-lead);line-height:1.75}
 .team-standards{display:flex;flex-wrap:wrap;gap:var(--s3);list-style:none;padding:0;margin:var(--s5) 0 0}
 .team-standards .card{display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;font-weight:600}
@@ -725,26 +718,38 @@ html[dir=rtl] input[dir=ltr]{text-align:right}
 @media (max-width:640px){form.demo{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- footer ---------- */
-footer{background:var(--navy-dd);color:var(--on-navy-muted)}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr 1.2fr;gap:clamp(1.5rem,1rem + 2vw,3rem);padding:clamp(3rem,2rem + 3vw,4.5rem) 0 var(--s7)}
-.flogo{height:auto;width:min(100%,13rem);object-fit:contain;object-position:left center}
-html[dir=rtl] .flogo{object-position:right center}
-.fnote{margin-top:var(--s4);font-size:var(--fs-sm);max-width:34ch}
-footer h2{font-size:var(--fs-xs);font-weight:600;color:#fff;margin-bottom:var(--s3);letter-spacing:.06em;text-transform:uppercase}
+footer{background:var(--navy-dd);color:var(--on-navy-muted);border-top:1px solid var(--on-navy-line)}
+footer h2{font-size:var(--fs-xs);font-weight:600;color:var(--teal);margin-bottom:var(--s4);letter-spacing:.06em;text-transform:uppercase}
 html[dir=rtl] footer h2{letter-spacing:0;font-size:var(--fs-sm)}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.1rem;font-size:var(--fs-sm)}
-footer a{text-decoration:none;display:inline-block;padding:.3rem 0}
-footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.follow{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.35rem}
-.follow a{width:2.5rem;height:2.5rem;border:1px solid rgba(255,255,255,.2);border-radius:var(--r-sm);display:grid;place-items:center;padding:0}
-.follow a:hover{background:rgba(255,255,255,.08)}
+footer ul{list-style:none;margin:0;padding:0}
+footer a{text-decoration:none;transition:color .15s}
+footer a:hover{color:#fff}
+/* top band: brand and social on one side, contact details on the other */
+.f-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--s7) clamp(2rem,1rem + 5vw,6rem);padding:clamp(3.5rem,2.5rem + 3vw,5.5rem) 0 clamp(2.5rem,2rem + 2vw,3.5rem);border-bottom:1px solid var(--on-navy-line)}
+.flogo{height:auto;width:min(100%,12.5rem);object-fit:contain;object-position:left center}
+html[dir=rtl] .flogo{object-position:right center}
+.fnote{margin:var(--s5) 0 var(--s6);font-size:var(--fs-lead);line-height:1.65;color:var(--on-navy-soft);max-width:42ch}
+.follow{display:flex;flex-wrap:wrap;gap:var(--s3)}
+.follow a{width:2.75rem;height:2.75rem;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:grid;place-items:center;color:#fff;transition:background-color .2s,border-color .2s,color .2s}
+.follow a:hover{background:var(--teal);border-color:var(--teal);color:var(--navy-dd)}
 .follow svg{width:1.1rem;height:1.1rem}
-.legal{border-top:1px solid var(--on-navy-line);padding:var(--s5) 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem;font-size:var(--fs-xs)}
-.legal .lk{display:flex;flex-wrap:wrap;gap:0 1.25rem}
+.f-contact ul{display:grid;gap:var(--s5)}
+.f-contact li,.f-contact a{display:flex;align-items:center;gap:var(--s4);color:#fff;font-size:var(--fs-lead);font-weight:500;line-height:1.45;overflow-wrap:anywhere}
+.f-contact a:hover{color:var(--teal)}
+.f-ic{flex-shrink:0;width:2.75rem;height:2.75rem;border-radius:50%;display:grid;place-items:center;background:rgba(88,195,197,.12);color:var(--teal)}
+.f-ic svg{width:1.15rem;height:1.15rem}
+/* link row: quick links, then all solutions flowing into columns */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:var(--s7) clamp(2rem,1rem + 5vw,6rem);padding:clamp(2.5rem,2rem + 2vw,3.5rem) 0}
+footer .fgrid ul{font-size:var(--fs-sm)}
+footer .fgrid a{display:inline-block;padding:.35rem 0}
+.f-sol ul{columns:3 13rem;column-gap:var(--s6)}
+.f-sol li{break-inside:avoid}
+.legal{border-top:1px solid var(--on-navy-line);padding:var(--s5) 0 var(--s6);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem 1.5rem;font-size:var(--fs-xs)}
+.legal .lk{display:flex;flex-wrap:wrap;gap:0 1.5rem}
+.legal a{padding:.25rem 0}
 .v-note{display:inline-flex;align-items:center;gap:.5rem}
 .v-note i{width:.5rem;height:.5rem;border-radius:2px;background:var(--teal);display:inline-block}
-@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+@media (max-width:900px){.f-top,.fgrid{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- reveal (gentle, opt-out with reduced motion) ---------- */
 @media (prefers-reduced-motion:no-preference){

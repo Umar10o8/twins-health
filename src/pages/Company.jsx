@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { L, useLang, coLink, CO_KEYS } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG } from '../config.js';
-import { Pattern, Mark, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
+import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
 import { Twin } from '../components/graphics.jsx';
 import { NotFound } from './Main.jsx';
 
@@ -41,7 +41,7 @@ export function Team() {
   usePageMeta(c.TITLES.team, c.META.team);
   return <>
     <CoBanner label={c.teamL} h1={m.h1} sub={m.sub} />
-    <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.teamL}</p><h2 className="h2">{m.whoT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{m.who}</p></div><div className="rv co-art" aria-hidden="true"><Mark cls="lg" /></div></div></section>
+    <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.teamL}</p><h2 className="h2">{m.whoT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{m.who}</p></div><div className="rv co-art"><img className="co-photo team-photo" src={IMG.brandTablet} alt="" width="1100" height="1320" loading="lazy" /></div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.bringT} /><div className="grid g2">{m.bring.map((b, i) => <IconCard key={i} item={b} className="co-cap" />)}</div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.howT} /><div className="grid g4">{m.how.map((h, i) => <IconCard key={i} item={h} />)}</div></div></section>
     <section className="sec tint"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.stdT} p={m.std} /><ul className="team-standards">{c.about.q.map(([icon, label]) => <li className="card rv" key={label}><Icon name={icon} /><span>{label}</span></li>)}</ul></div></section>
@@ -89,7 +89,7 @@ export function History() {
     <section className="sec jr"><div className="wrap">
       <nav className="jr-years" aria-label={c.jumpTo}><span>{c.jumpTo}</span>{years.filter(y => y !== 'today').map(y => <a key={y} href={'#ms-' + y} dir="ltr" onClick={e => jump(e, y)}>{y}</a>)}</nav>
       <ol className="jr-line">{j.ms.map((m, i) => <Milestone key={i} m={m} i={i} first={j.ms.findIndex(x => x[0] === m[0]) === i} />)}</ol>
-      <div className="jr-today rv"><Pattern /><div><p className="eyebrow">{c.journeyL}</p><h2>{j.todayT}</h2><p>{j.today}</p></div><Mark /></div>
+      <div className="jr-today rv"><Pattern /><div><p className="eyebrow">{c.journeyL}</p><h2>{j.todayT}</h2><p>{j.today}</p></div><img className="jr-today-photo" src={IMG.overhead} alt="" width="1441" height="1800" loading="lazy" /></div>
     </div></section>
     <Cta />
   </>;
