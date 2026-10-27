@@ -5,8 +5,6 @@ import { Icon, Arr, SOL_ICON } from '../icons.jsx';
 import { IMG, SITE_URL } from '../config.js';
 
 export const Pattern = () => <div className="pattern" aria-hidden="true" />;
-export const Mark = () => <img className="mark" src={IMG.tMarkWhite} alt="" aria-hidden="true" width="44" height="97" />;
-export const BrandSymbol = () => <div className="brand-symbol" aria-hidden="true"><img src={IMG.tMarkWhite} alt="" width="44" height="97" /></div>;
 
 /* Per-route <title>, meta description, canonical and hreflang */
 export function usePageMeta(title, desc) {
@@ -38,7 +36,7 @@ export function Banner({ crumbs, h1, sub, lede, children }) {
           ? <li key={i} aria-current="page">{c[0]}</li>
           : <li key={i}><L to={c[1]}>{c[0]}</L></li>)}
       </ol></nav>
-      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{sub && <p className="sub" lang={other} dir={other === 'ar' ? 'rtl' : 'ltr'}>{sub}</p>}{lede && <p className="lede">{lede}</p>}{children}</div><Mark /></div></section>
+      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{sub && <p className="sub" lang={other} dir={other === 'ar' ? 'rtl' : 'ltr'}>{sub}</p>}{lede && <p className="lede">{lede}</p>}{children}</div></div></section>
   );
 }
 

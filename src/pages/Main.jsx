@@ -2,7 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { L, useLang, Html, DATA } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
-import { Pattern, BrandSymbol, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
+import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
 import { Twin } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
@@ -18,7 +18,6 @@ export function Home() {
       <div className="ctas"><L className="btn btn-teal" to="/contact">{t.demo} <Arr /></L><L className="btn btn-ghost-light" to="/solutions">{t.explore}</L></div></div>
       <div className="hero-visual">
         <img src={IMG.hero} alt={lang === 'ar' ? 'رجل يستخدم جهازًا لوحيًا في الرياض' : 'A man using a tablet in Riyadh'} width="1448" height="1000" />
-        <BrandSymbol />
       </div></div>
     </section>
     <div className="stats"><div className="wrap"><div className="grid">{t.stats.map((s, i) => <div className="stat" key={i}><b>{s[0]}</b><span>{s[1]}</span></div>)}</div></div></div>
