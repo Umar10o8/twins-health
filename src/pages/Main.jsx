@@ -3,7 +3,7 @@ import { L, useLang, Html, DATA } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, BrandSymbol, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
-import { Mockup, Twin } from '../components/graphics.jsx';
+import { Twin } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
 
@@ -88,9 +88,8 @@ export function Solutions() {
   useMeta('solutions');
   return <>
     <Banner crumbs={[[t.solutions]]} h1={t.solsH1} sub={t.solsSub} lede={t.solsLede} />
-    <section className="sec alt platform"><div className="wrap split" style={{ alignItems: 'center' }}>
+    <section className="sec alt platform"><div className="wrap">
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2><p className="section-lede">{t.platLede}</p><Ticks items={t.platTicks} /></div>
-      <div className="rv"><div className="stage"><Mockup /></div><p className="mock-cap">{t.mockCap}</p></div>
     </div></section>
     {D.ZONES.map((z, i) => <section className={'sec' + (i % 2 ? '' : ' alt')} id={'zone-' + z.z} key={z.z}><div className="wrap"><SHead eyebrow={t.zone(z)} h2={z.name} p={z.short} />
       <div className="grid g3 solutions-grid">{D.SOL.filter(s => s.z === z.z).map(s => <SolCard key={s.id} s={s} />)}</div>

@@ -142,7 +142,7 @@ function Header() {
 
 /* ---------- footer ---------- */
 function Footer() {
-  const { t, D, co } = useLang();
+  const { t, co } = useLang();
   return (
     <footer>
       <div className="wrap">
@@ -162,14 +162,11 @@ function Footer() {
             <li><a href="tel:+966115001950"><span className="f-ic"><Icon name="phone" /></span><span dir="ltr">+966 11 500 1950</span></a></li>
             <li><a href="mailto:sales@sanedhealth.com"><span className="f-ic"><Icon name="mail" /></span><span>sales@sanedhealth.com</span></a></li>
           </ul></div>
-        </div>
-        <div className="fgrid">
-          <nav aria-label={t.quick}><h2>{t.quick}</h2><ul>
+          <nav className="f-quick" aria-label={t.quick}><h2>{t.quick}</h2><ul>
             <li><L to="/about">{t.about}</L></li>
             {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}
             <li><L to="/solutions">{t.solutions}</L></li><li><L to="/innovation">{t.innovation}</L></li><li><L to="/leadership">{t.leadership}</L></li><li><L to="/contact">{t.contact}</L></li>
           </ul></nav>
-          <nav className="f-sol" aria-label={t.solutions}><h2>{t.solutions}</h2><ul>{D.SOL.map(s => <li key={s.id}><L to={'/solutions/' + s.id}>{s.name}</L></li>)}</ul></nav>
         </div>
         <div className="legal"><span>{t.rights}</span><span className="v-note"><i aria-hidden="true" /><span>{t.vnote}</span></span><span className="lk"><a href="https://sanedhealth.com/privacy-policy" target="_blank" rel="noopener">{t.privacy}</a><a href="https://sanedhealth.com/terms-and-conditions" target="_blank" rel="noopener">{t.terms}</a></span></div>
       </div>

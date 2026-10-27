@@ -1,23 +1,6 @@
-/* Decorative illustrations: product mockup, digital twin, map */
+/* Decorative illustrations: digital twin, map */
 import { useLang } from '../i18n.jsx';
 import { Icon } from '../icons.jsx';
-
-export function Mockup() {
-  const m = useLang().t.mock;
-  return (
-    <div className="mock-wrap" role="img" aria-label={m.aria}>
-      <div className="win" aria-hidden="true"><div className="win-bar"><span /><span /><span /><b>{m.title}</b></div>
-        <div className="win-body"><div className="win-side">{['layout-dashboard', 'users', 'heart-pulse', 'calendar', 'bar-chart-3', 'settings'].map((n, i) => <span key={n} className={i ? '' : 'on'}><Icon name={n} /></span>)}</div>
-          <div className="win-main"><div className="kpis">{m.k.map((k, i) => <div className="kpi" key={i}><small>{k[0]}</small><b>{k[1]}</b><em>{k[2]}</em></div>)}</div>
-            <div className="chart-card"><div className="cc-h"><b>{m.chartT}</b><span>{m.chartS}</span></div>
-              <svg viewBox="0 0 420 130" className="chart" preserveAspectRatio="none"><g className="gridl">{[20, 55, 90, 125].map(y => <line key={y} x1="0" x2="420" y1={y} y2={y} />)}</g><path className="area" d="M0 110 L38 104 L76 98 L114 100 L152 86 L190 80 L228 72 L266 60 L304 56 L342 42 L380 34 L420 22 L420 130 L0 130Z" /><path className="line" d="M0 110 L38 104 L76 98 L114 100 L152 86 L190 80 L228 72 L266 60 L304 56 L342 42 L380 34 L420 22" /></svg></div>
-            <div className="plist">{m.rows.map((r, i) => <div className="prow" key={i}><span className="pav">{r[0]}</span><div><b>{r[1]}</b><small>{r[2]}</small></div><em className={'risk ' + r[4]}>{r[3]}</em></div>)}</div></div></div></div>
-      <div className="phone" aria-hidden="true"><div className="ph-notch" /><div className="ph-screen"><small className="ph-hi">{m.hi}</small><b className="ph-name">{m.name}</b>
-        <div className="ph-ring"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" className="rbg" /><circle cx="40" cy="40" r="32" className="rfg" /></svg><div><b>72%</b><small>{m.ring}</small></div></div>
-        {m.cards.map((c, i) => <div className="ph-card" key={i}><Icon name={c[0]} /><div><b>{c[1]}</b><small>{c[2]}</small></div></div>)}</div></div>
-    </div>
-  );
-}
 
 const BODY = 'M0 0 C -40 0 -58 30 -62 70 L -66 150 C -66 160 -52 162 -50 152 L -42 92 L -40 230 C -40 242 -22 244 -20 232 L -8 140 L 8 140 L 20 232 C 22 244 40 242 40 230 L 42 92 L 50 152 C 52 162 66 160 66 150 L 62 70 C 58 30 40 0 0 0Z';
 const LINK1 = 'M175 120 C 230 90, 250 90, 285 120';
