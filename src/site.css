@@ -258,7 +258,7 @@ html[dir=rtl] .hero h1{line-height:1.35;letter-spacing:0;font-weight:600}
 html[dir=rtl] .banner .sub{text-align:right}
 .banner .lede{margin-top:var(--s4);color:var(--on-navy-soft);max-width:var(--measure);font-size:var(--fs-lead)}
 .banner .chip{display:inline-block;margin-top:var(--s5);background:rgba(255,255,255,.08);border:1px solid var(--on-navy-line);border-radius:var(--r-sm);padding:.35rem .8rem;font-size:var(--fs-xs);font-weight:500}
-.banner .mark{height:9rem;opacity:.85;justify-self:end}
+.banner .mark{height:9rem;opacity:.85;justify-self:end;margin-inline-end:clamp(1rem,7vw,8rem)}
 @media (max-width:760px){.banner .wrap{grid-template-columns:1fr}.banner .mark{display:none}}
 
 /* ---------- grids and cards ---------- */
