@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { L, useLang, Html, DATA } from '../i18n.jsx';
+import { L, useLang, Html } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
@@ -17,7 +17,7 @@ export function Home() {
       <p className="lede">{t.heroLede}</p>
       <div className="ctas"><L className="btn btn-teal" to="/contact">{t.demo} <Arr /></L><L className="btn btn-ghost-light" to="/solutions">{t.explore}</L></div></div>
       <div className="hero-visual">
-        <img src={IMG.hero} alt={lang === 'ar' ? 'رجل يستخدم جهازًا لوحيًا في الرياض' : 'A man using a tablet in Riyadh'} width="1448" height="1000" />
+        <img src={IMG.hero} alt={lang === 'ar' ? 'ممرضة تراجع خطة الرعاية مع مريض مسن في منزله بالرياض' : 'A nurse reviewing a care plan with an older patient at his home in Riyadh'} width="2000" height="1116" />
       </div></div>
     </section>
     <div className="stats"><div className="wrap"><div className="grid">{t.stats.map((s, i) => <div className="stat" key={i}><b>{s[0]}</b><span>{s[1]}</span></div>)}</div></div></div>
@@ -44,7 +44,7 @@ export function Home() {
       <div className="rv platform-visual"><img className="platform-photo" src={IMG.elder} alt="" width="1673" height="1000" loading="lazy" /></div>
     </div></section>
     <section className="sec home-sec home-sol"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} />
-      <div className="grid g3 solutions-grid">{D.SOL.slice(0, 3).map((s, i) => <SolCard key={s.id} s={s} image={[IMG.phone, IMG.watch, IMG.scrubs][i]} />)}</div>
+      <div className="grid g3 solutions-grid">{D.SOL.slice(0, 3).map(s => <SolCard key={s.id} s={s} />)}</div>
       <p className="actions"><L className="btn btn-outline" to="/solutions">{t.viewAll} <Arr /></L></p>
     </div></section>
     <section className="sec home-sec v2030"><Pattern /><div className="wrap" style={{ position: 'relative' }}><SHead eyebrow={t.vEyebrow} h2={t.vTitle} p={t.vLede} />
@@ -63,11 +63,11 @@ export function About() {
   const { t, D, co } = useLang();
   useMeta('about');
   return <>
-    <Banner crumbs={[[t.about]]} h1={t.aboutH1} sub={t.aboutSub} lede={t.aboutLede} />
+    <Banner crumbs={[[t.about]]} h1={t.aboutH1} lede={t.aboutLede} />
     <section className="sec"><div className="wrap">
       <div className="split story-grid">
         <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.storyP1}</p><p>{t.storyP2}</p></div>
-        <div className="rv story-photo"><img src={IMG.brandCard} alt="" width="1000" height="1801" loading="lazy" /></div>
+        <div className="rv story-photo"><img src={IMG.familyApp} alt="" width="2000" height="1116" loading="lazy" /></div>
       </div>
       <VisionMission className="co-vm story-vm" vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} />
     </div></section>
@@ -86,7 +86,7 @@ export function Solutions() {
   const { t, D } = useLang();
   useMeta('solutions');
   return <>
-    <Banner crumbs={[[t.solutions]]} h1={t.solsH1} sub={t.solsSub} lede={t.solsLede} />
+    <Banner crumbs={[[t.solutions]]} h1={t.solsH1} lede={t.solsLede} />
     <section className="sec alt platform"><div className="wrap">
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2><p className="section-lede">{t.platLede}</p><Ticks items={t.platTicks} /></div>
     </div></section>
@@ -104,9 +104,9 @@ export function Solution() {
   usePageMeta(s ? s.name + t.brandSuffix : t.TITLES.notfound, s ? s.intro : t.META.notfound);
   if (!s) return <NotFound />;
   const n = D.SOL.length, prev = D.SOL[(i + n - 1) % n], next = D.SOL[(i + 1) % n];
-  const z = D.ZONES.find(x => x.z === s.z), other = DATA[lang === 'ar' ? 'en' : 'ar'].SOL[i];
+  const z = D.ZONES.find(x => x.z === s.z);
   return <>
-    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={'Saned ' + s.name} sub={'Saned ' + other.name} lede={s.intro}><span className="chip">{t.zone(z)}: {z.name}</span></Banner>
+    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={'Saned ' + s.name} lede={s.intro}><span className="chip">{t.zone(z)}: {z.name}</span></Banner>
     <ProductVideo videos={s.videos?.[lang] || []} label={lang === 'ar' ? 'مقاطع فيديو المنتج' : 'Product videos'} />
     <section className="sec"><div className="wrap sd"><div>
       <h2 className="h2" style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>{t.capT}</h2>
@@ -130,7 +130,7 @@ export function Innovation() {
   const { t } = useLang();
   useMeta('innovation');
   return <>
-    <Banner crumbs={[[t.innovation]]} h1={t.innH1} sub={t.innSub} lede={t.innLede} />
+    <Banner crumbs={[[t.innovation]]} h1={t.innH1} lede={t.innLede} />
     <section className="sec"><div className="wrap"><SHead eyebrow={t.vbcEyebrow} h2={t.vbcT} />
       <div className="vv rv"><div className="card"><span className="tagline">{t.vol[0]}</span><h3>{t.vol[1]}</h3><p>{t.vol[2]}</p></div><div className="arr" aria-hidden="true"><Icon name="arrow-right" /></div><div className="card val"><span className="tagline">{t.val[0]}</span><h3>{t.val[1]}</h3><p>{t.val[2]}</p></div></div>
       <h3 style={{ fontSize: '1.25rem', margin: '3rem 0 1.25rem' }}>{t.vbcHowT}</h3>
@@ -146,7 +146,7 @@ export function Leadership() {
   const { t, D, q, co } = useLang();
   useMeta('leadership');
   return <>
-    <Banner crumbs={[[t.leadership]]} h1={t.leadH1} sub={t.leadSub} lede={t.leadLede} />
+    <Banner crumbs={[[t.leadership]]} h1={t.leadH1} lede={t.leadLede} />
     <section className="sec"><div className="wrap"><p className="lead co-intro rv">{co.mgmt.intro}</p></div></section>
     <section className="sec"><div className="wrap"><div className="card ceo rv"><div className="ph"><img src={IMG.ao} alt={t.ceoName} width="480" height="480" /></div><div><p className="eyebrow">{t.ceoLabel}</p><h2>{t.ceoName}</h2><p className="role">{t.ceoOrg}</p><blockquote>{q(D.QUOTE)}</blockquote></div></div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={t.teamEyebrow} h2={t.teamT} /><div className="grid g5">{D.TEAM.map(m => <div className={'person card rv' + (m[3] ? ' lead' : '')} key={m[0]}><div className="ph"><img src={IMG[m[2]]} alt={m[0]} width="480" height="480" loading="lazy" /></div><h3>{m[0]}</h3><p>{m[1]}</p></div>)}</div></div></section>
@@ -157,7 +157,7 @@ export function Leadership() {
 export function NotFound() {
   const { t } = useLang();
   useMeta('notfound');
-  return <Banner crumbs={[['404']]} h1={t.nfH1} sub={t.nfSub} lede={t.nfLede}>
+  return <Banner crumbs={[['404']]} h1={t.nfH1} lede={t.nfLede}>
     <p className="actions"><L className="btn btn-teal" to="/">{t.nfHome} <Arr /></L><L className="btn btn-ghost-light" to="/solutions">{t.explore}</L></p>
   </Banner>;
 }
