@@ -25,10 +25,8 @@ export function usePageMeta(title, desc) {
   }, [title, desc, pathname, prefix]);
 }
 
-/* sub: the heading in the other language, shown under the h1 */
-export function Banner({ crumbs, h1, sub, lede, children }) {
-  const { t, lang } = useLang();
-  const other = lang === 'ar' ? 'en' : 'ar';
+export function Banner({ crumbs, h1, lede, children }) {
+  const { t } = useLang();
   return (
     <section className="banner"><Pattern /><div className="wrap"><div>
       <nav className="crumbs" aria-label="Breadcrumb"><ol><li><L to="/">{t.home}</L></li>
@@ -36,7 +34,7 @@ export function Banner({ crumbs, h1, sub, lede, children }) {
           ? <li key={i} aria-current="page">{c[0]}</li>
           : <li key={i}><L to={c[1]}>{c[0]}</L></li>)}
       </ol></nav>
-      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{sub && <p className="sub" lang={other} dir={other === 'ar' ? 'rtl' : 'ltr'}>{sub}</p>}{lede && <p className="lede">{lede}</p>}{children}</div></div></section>
+      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{lede && <p className="lede">{lede}</p>}{children}</div></div></section>
   );
 }
 
