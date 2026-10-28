@@ -31,13 +31,13 @@ const CREDS=["NPHIES integrated","ISO 13485:2016","HIPAA aligned","ZATCA complia
 const VALUES=[["Innovation","Cloud and AI technology applied to real problems in care delivery."],["Comprehensive care","Every aspect of patient health: medical, mental and social."],["Patient-centricity","Effective, user-friendly and inclusive for patients and families."],["Integrity and quality","Saudi and international standards for data, safety and quality."],["Partnership","Long-term work alongside providers, government and payers."]];
 const MOC=[["Keep Well",7],["Safe Birth",7],["Planned Care",4],["Urgent Care",3],["Chronic Care",3],["Last Phase",3],["Cross-cutting",15]];
 
-return {QUOTE,ZONES:ZONES.map(z=>({...z,zl:z.z})),SOL,TEAM,VALUES,MOC:MOC.map((m,i,a)=>[m[0],m[1],i===a.length-1?1:0])};}
+return {QUOTE,ZONES:ZONES.map((z,i)=>({...z,zl:String(i+1)})),SOL,TEAM,VALUES,MOC:MOC.map((m,i,a)=>[m[0],m[1],i===a.length-1?1:0])};}
 function dataAR(){
 const QUOTE="ينصبّ تركيزنا المستقبلي على مساعدة المؤسسات الصحية في إطلاق إمكاناتها الرقمية، من خلال مشاركة أحدث التقنيات وأفضل الممارسات والرؤى التي تعزز الأداء.";
 const ZONES=[
- {z:"A",zl:"أ",name:"الوقاية وصحة السكان والوصول إلى الرعاية",short:"الحفاظ على صحة الناس ومساعدتهم في الوصول إلى الرعاية المناسبة."},
- {z:"B",zl:"ب",name:"الرعاية عبر مراحلها المتكاملة",short:"رعاية متصلة من العيادة والمستشفى إلى المنزل."},
- {z:"C",zl:"ج",name:"تنسيق المنظومة والتمويل والذكاء الصحي",short:"تشغيل المنظومة الصحية وتمويلها والتخطيط لها."}
+ {z:"A",zl:"1",name:"الوقاية وصحة السكان والوصول إلى الرعاية",short:"الحفاظ على صحة الناس ومساعدتهم في الوصول إلى الرعاية المناسبة."},
+ {z:"B",zl:"2",name:"الرعاية عبر مراحلها المتكاملة",short:"رعاية متصلة من العيادة والمستشفى إلى المنزل."},
+ {z:"C",zl:"3",name:"تنسيق المنظومة والتمويل والذكاء الصحي",short:"تشغيل المنظومة الصحية وتمويلها والتخطيط لها."}
 ];
 const P=(z,id,name,short,intro,feats,who)=>({z,id,name,short,intro,feats,who});
 const SOL=[
