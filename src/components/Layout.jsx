@@ -16,27 +16,6 @@ export function useNavKey() {
   return { key, coKey };
 }
 
-/* ---------- accessibility tools (per-viewer, stored locally) ---------- */
-const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } } };
-
-function UtilityBar() {
-  const { t } = useLang();
-  const [contrast, setContrast] = useState(() => store.get('th-contrast') === '1');
-  const root = document.documentElement;
-
-  useEffect(() => { delete root.dataset.fs; store.set('th-fs', 0); }, []);
-  useEffect(() => { if (contrast) root.dataset.contrast = 'high'; else delete root.dataset.contrast; store.set('th-contrast', contrast ? '1' : '0'); }, [contrast]);
-
-  return (
-    <div className="utility" role="region" aria-label={t.toolsLabel}><div className="wrap">
-      <p className="tag"><i aria-hidden="true" /><span>{t.tagline}</span></p>
-      <div className="tools">
-        <button type="button" aria-label={t.contrast} title={t.contrast} aria-pressed={contrast} onClick={() => setContrast(c => !c)}><Icon name="contrast" /></button>
-      </div>
-    </div></div>
-  );
-}
-
 /* Same page in the other language */
 function LangSwitch() {
   const { t, lang } = useLang();
@@ -178,7 +157,6 @@ export default function Layout({ children }) {
   const focusTitle = () => { const h = document.getElementById('pageTitle'); (h || document.getElementById('app')).focus(); };
   return <>
     <button className="skip" type="button" onClick={focusTitle}>{t.skip}</button>
-    <UtilityBar />
     <Header />
     <main id="app" tabIndex={-1}>{children}</main>
     <Footer />
