@@ -4,13 +4,14 @@ import logoInverse from '../assets/logos/logo-inverse.png';
 import logoArNavy from '../assets/logos/logo-ar-navy.png';
 import logoArInverse from '../assets/logos/logo-ar-inverse.png';
 import homeVisitPhoto from '../assets/photos/home-visit.jpg';
-import familyPhoto from '../assets/photos/family.jpg';
+import clinicWelcomePhoto from '../assets/photos/clinic-welcome.jpg';
 import clinicianPhoto from '../assets/photos/clinician.jpg';
 import virtualCarePhoto from '../assets/photos/virtual-care.jpg';
 import elderPhoto from '../assets/photos/elder.jpg';
 import overheadPhoto from '../assets/photos/overhead.jpg';
 import brandTabletPhoto from '../assets/photos/brand-tablet.jpg';
 import familyAppPhoto from '../assets/photos/family-app.jpg';
+import aboutTerracePhoto from '../assets/photos/about-terrace.jpg';
 import nphiesLogo from '../assets/badges/nphies.png';
 import isoLogo from '../assets/badges/iso-13485.png';
 import hipaaLogo from '../assets/badges/hipaa.png';
@@ -33,13 +34,14 @@ export const IMG = {
   p5: asset('abdulmohsen-albrag.jpg'),
   saned: asset('saned-health.webp'),
   hero: homeVisitPhoto,
-  family: familyPhoto,
+  clinicWelcome: clinicWelcomePhoto,
   clinician: clinicianPhoto,
   virtualCare: virtualCarePhoto,
   elder: elderPhoto,
   overhead: overheadPhoto,
   brandTablet: brandTabletPhoto,
   familyApp: familyAppPhoto,
+  aboutTerrace: aboutTerracePhoto,
 };
 
 /* Compliance logos, in the same order as the badge lists in strings.js and company.js: NPHIES, ISO, HIPAA, ZATCA */

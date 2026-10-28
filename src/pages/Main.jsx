@@ -32,7 +32,7 @@ export function Home() {
       </L>)}
     </div></div></section>
     <section className="sec home-sec home-about"><div className="wrap home-about-grid">
-      <div className="home-about-photo rv"><img src={IMG.family} alt={lang === 'ar' ? 'عائلة تستخدم جهازًا لوحيًا معًا' : 'A family using a tablet together'} width="1673" height="1000" loading="lazy" /></div>
+      <div className="home-about-photo rv"><img src={IMG.clinicWelcome} alt={lang === 'ar' ? 'موظف يرحب بزائرة في استقبال عيادة حديثة' : 'A staff member welcoming a visitor at a modern clinic reception'} width="1376" height="768" loading="lazy" /></div>
       <div className="prose rv home-about-copy"><p className="eyebrow">{t.aboutEyebrow}</p><h2 className="h2">{t.aboutTitle}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.aboutP1}</p><p>{t.aboutP2}</p>
         <p style={{ marginTop: '1.5rem' }}><L className="link" to="/about">{t.aboutLink} <Icon name="arrow-right" /></L></p></div>
     </div></section>

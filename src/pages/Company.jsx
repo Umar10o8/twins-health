@@ -21,7 +21,7 @@ function AboutUs() {
     <CoBanner label={c.aboutUs} h1={a.h1} sub={a.sub} />
     <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}>
       <div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.whoT}</h2>{a.who.map((p, i) => i ? <p key={i}>{p}</p> : <p key={i} className="lead" style={{ marginTop: '1rem' }}>{p}</p>)}</div>
-      <div className="rv co-art"><img className="co-photo" src={IMG.clinician} alt="" width="843" height="562" /></div>
+      <div className="rv co-art"><img className="co-photo" src={IMG.aboutTerrace} alt="" width="1600" height="893" /></div>
     </div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.doT} /><div className="grid g3">{a.do.map((d, i) => <IconCard key={i} item={d} className="co-cap" />)}</div></div></section>
     <section className="glance"><div className="wrap"><h2 className="sr-only">{a.glanceT}</h2><div className="glance-grid rv">{a.glance.map((g, i) => <div className="stat" key={i}><b>{g[0]}</b><span>{g[1]}</span></div>)}</div></div></section>
