@@ -139,7 +139,7 @@ function Footer() {
           <div className="f-contact"><h2>{t.fcontact}</h2><ul>
             <li><span className="f-ic"><Icon name="map-pin" /></span><span>{t.address}</span></li>
             <li><a href="tel:+966115001950"><span className="f-ic"><Icon name="phone" /></span><span dir="ltr">+966 11 500 1950</span></a></li>
-            <li><a href="mailto:sales@sanedhealth.com"><span className="f-ic"><Icon name="mail" /></span><span>sales@sanedhealth.com</span></a></li>
+            <li><a href="mailto:sales@twinshealth.sa"><span className="f-ic"><Icon name="mail" /></span><span>sales@twinshealth.sa</span></a></li>
           </ul></div>
           <nav className="f-quick" aria-label={t.quick}><h2>{t.quick}</h2><ul>
             {coLinks(co).map(l => <li key={l.key}><L to={l.to}>{l.label}</L></li>)}

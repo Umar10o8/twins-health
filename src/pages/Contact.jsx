@@ -5,7 +5,7 @@ import { Icon, Arr } from '../icons.jsx';
 import { Banner, Ticks, usePageMeta } from '../components/common.jsx';
 import { MapCard } from '../components/graphics.jsx';
 
-const EMAIL = 'sales@sanedhealth.com';
+const EMAIL = 'sales@twinshealth.sa';
 /* Google Apps Script web app (Deploy > Web app URL, ending in /exec). It adds each request as a row in the
    contact Google Sheet and emails a notification. */
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwp4kBtjpNTe9El7qOw-OxObj0mh-BcUYLFwxUW2rdH6uojY9PpMs1NdRyv-VAIZgGHdQ/exec';

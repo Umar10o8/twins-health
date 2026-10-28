@@ -32,7 +32,7 @@ function AboutUs() {
     <section className="sec alt"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.aiT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{a.ai}</p></div><div className="rv"><Twin /></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.qT} /><div className="grid g4 badges">{a.q.map((b, i) => <BadgeCard key={i} item={b} logo={BADGE_LOGOS[i]} />)}</div></div></section>
     <section className="cta co-cta"><div className="wrap"><div><h2>{a.ctaT}</h2><p>{a.ctaP}</p><L className="btn btn-primary" to="/contact">{a.ctaBtn} <Arr /></L></div>
-      <address className="co-addr"><a href="mailto:sales@sanedhealth.com"><Icon name="mail" /><span>sales@sanedhealth.com</span></a><a href="tel:+966115001950"><Icon name="phone" /><span dir="ltr">+966 11 500 1950</span></a><span><Icon name="map-pin" /><span>{a.address}</span></span></address></div></section>
+      <address className="co-addr"><a href="mailto:sales@twinshealth.sa"><Icon name="mail" /><span>sales@twinshealth.sa</span></a><a href="tel:+966115001950"><Icon name="phone" /><span dir="ltr">+966 11 500 1950</span></a><span><Icon name="map-pin" /><span>{a.address}</span></span></address></div></section>
   </>;
 }
 

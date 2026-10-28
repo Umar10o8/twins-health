@@ -56,7 +56,7 @@ The site retains all 17 existing solutions and routes. The September 2021 and 20
 
 ## Contact form
 
-There is still no backend. On a valid submit the form opens the visitor's email app with a prefilled message to `sales@sanedhealth.com`. To post to a form endpoint or CRM instead, replace the mailto block in `onSubmit` in `src/pages/Contact.jsx`.
+There is still no backend. On a valid submit the form opens the visitor's email app with a prefilled message to `sales@twinshealth.sa`. To post to a form endpoint or CRM instead, replace the mailto block in `onSubmit` in `src/pages/Contact.jsx`.
 
 ## SEO
 
