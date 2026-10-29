@@ -7,6 +7,11 @@ import { Twin } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
 
+/* Solution page heading: "Saned <name>" in English, "ساند لـ<name>" in Arabic */
+const heroName = (s, lang) => lang !== 'ar' ? 'Saned ' + s.name
+  : s.id === 'aggregator' ? 'Saned Aggregator'
+  : 'ساند ' + (s.name.startsWith('ال') ? 'لل' + s.name.slice(2) : 'ل' + s.name);
+
 export function Home() {
   const { t, D, q, lang } = useLang();
   useMeta('home');
@@ -106,7 +111,7 @@ export function Solution() {
   const n = D.SOL.length, prev = D.SOL[(i + n - 1) % n], next = D.SOL[(i + 1) % n];
   const z = D.ZONES.find(x => x.z === s.z);
   return <>
-    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={'Saned ' + s.name} lede={s.intro}><span className="chip">{t.zone(z)}: {z.name}</span></Banner>
+    <Banner crumbs={[[t.solutions, '/solutions'], [s.name]]} h1={heroName(s, lang)} lede={s.intro}><span className="chip">{t.zone(z)}: {z.name}</span></Banner>
     <ProductVideo videos={s.videos?.[lang] || []} label={lang === 'ar' ? 'مقاطع فيديو المنتج' : 'Product videos'} />
     <section className="sec"><div className="wrap sd"><div>
       <h2 className="h2" style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>{t.capT}</h2>
