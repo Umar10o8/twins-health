@@ -41,7 +41,7 @@ src/icons.jsx            lucide-react icons by name. Add new icon names here
 src/components/
   Layout.jsx             Utility bar (text size, contrast, language), header, menus, mobile nav, footer
   common.jsx             Banner, section heading, cards, zone tabs, product video support, CTA and page metadata
-  graphics.jsx           Dashboard mockup, digital-twin illustration, map
+  graphics.jsx           Hero T animation, dashboard and insights mockups (sample data), count-up numbers, digital twin, map
 src/pages/
   Main.jsx               Home, About, Solutions, Solution detail, Innovation, Leadership, 404
   Contact.jsx            Contact page and demo-request form
@@ -56,7 +56,7 @@ The site retains all 17 existing solutions and routes. The September 2021 and 20
 
 ## Contact form
 
-There is still no backend. On a valid submit the form opens the visitor's email app with a prefilled message to `sales@twinshealth.sa`. To post to a form endpoint or CRM instead, replace the mailto block in `onSubmit` in `src/pages/Contact.jsx`.
+On a valid submit the form posts the request to [Web3Forms](https://web3forms.com), which emails it to the inbox the access key was created with. Reply-To is set to the visitor's email. The key (`FORM_KEY` in `src/pages/Contact.jsx`) is public by design; to send requests to a different inbox, create a new key at web3forms.com with that address and replace it. `google-apps-script/Code.gs` is the previous Google Sheet endpoint and is no longer used.
 
 ## SEO
 

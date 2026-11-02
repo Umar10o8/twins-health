@@ -3,7 +3,7 @@ import { L, useLang, Html } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
-import { Twin } from '../components/graphics.jsx';
+import { Twin, HeroVisual, Dashboard, Insights, Count, TWatermark } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
 
@@ -13,7 +13,7 @@ const heroName = (s, lang) => lang !== 'ar' ? 'Saned ' + s.name
   : 'ساند ' + (s.name.startsWith('ال') ? 'لل' + s.name.slice(2) : 'ل' + s.name);
 
 export function Home() {
-  const { t, D, q, lang } = useLang();
+  const { t, D, q } = useLang();
   useMeta('home');
   return <>
     <section className="hero"><Pattern /><div className="wrap"><div>
@@ -21,11 +21,9 @@ export function Home() {
       <Html as="h1" id="pageTitle" tabIndex={-1} html={t.heroH1} />
       <p className="lede">{t.heroLede}</p>
       <div className="ctas"><L className="btn btn-teal" to="/contact">{t.demo} <Arr /></L><L className="btn btn-ghost-light" to="/solutions">{t.explore}</L></div></div>
-      <div className="hero-visual">
-        <img src={IMG.hero} alt={lang === 'ar' ? 'ممرضة تراجع خطة الرعاية مع مريض مسن في منزله بالرياض' : 'A nurse reviewing a care plan with an older patient at his home in Riyadh'} width="2000" height="1116" />
-      </div></div>
+      <HeroVisual /></div>
     </section>
-    <div className="stats"><div className="wrap"><div className="grid">{t.stats.map((s, i) => <div className="stat" key={i}><b>{s[0]}</b><span>{s[1]}</span></div>)}</div></div></div>
+    <div className="stats"><div className="wrap"><div className="grid">{t.stats.map((s, i) => <div className="stat" key={i}><b><Count value={s[0]} /></b><span>{s[1]}</span></div>)}</div></div></div>
     <section className="sec alt home-overview"><div className="wrap"><div className="grid g4 home-links">
       {[
         [t.about, '/about', 'building-2', t.aboutP1],
@@ -37,7 +35,7 @@ export function Home() {
       </L>)}
     </div></div></section>
     <section className="sec home-sec home-about"><div className="wrap home-about-grid">
-      <div className="home-about-photo rv"><img src={IMG.clinicWelcome} alt={lang === 'ar' ? 'موظف يرحب بزائرة في استقبال عيادة حديثة' : 'A staff member welcoming a visitor at a modern clinic reception'} width="1376" height="768" loading="lazy" /></div>
+      <div className="home-about-viz rv"><Insights /></div>
       <div className="prose rv home-about-copy"><p className="eyebrow">{t.aboutEyebrow}</p><h2 className="h2">{t.aboutTitle}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.aboutP1}</p><p>{t.aboutP2}</p>
         <p style={{ marginTop: '1.5rem' }}><L className="link" to="/about">{t.aboutLink} <Icon name="arrow-right" /></L></p></div>
     </div></section>
@@ -46,13 +44,13 @@ export function Home() {
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2>
         <p className="section-lede">{t.platLede}</p><Ticks items={t.platTicks} />
         <p className="actions"><L className="btn btn-outline" to="/solutions">{t.learn} <Arr /></L></p></div>
-      <div className="rv platform-visual"><img className="platform-photo" src={IMG.elder} alt="" width="1673" height="1000" loading="lazy" /></div>
+      <div className="rv platform-dash"><Dashboard /></div>
     </div></section>
     <section className="sec home-sec home-sol"><div className="wrap"><SHead eyebrow={t.solEyebrow} h2={t.solTitle} p={t.solLede} />
       <div className="grid g3 solutions-grid">{D.SOL.slice(0, 3).map(s => <SolCard key={s.id} s={s} />)}</div>
       <p className="actions"><L className="btn btn-outline" to="/solutions">{t.viewAll} <Arr /></L></p>
     </div></section>
-    <section className="sec home-sec v2030"><Pattern /><div className="wrap" style={{ position: 'relative' }}><SHead eyebrow={t.vEyebrow} h2={t.vTitle} p={t.vLede} />
+    <section className="sec home-sec v2030"><Pattern /><TWatermark /><div className="wrap" style={{ position: 'relative' }}><SHead eyebrow={t.vEyebrow} h2={t.vTitle} p={t.vLede} />
       <div className="grid g3">{t.pillars.map((p, i) => <div className="pillar rv" key={i}><span className="ic"><Icon name={p[0]} /></span><h3>{p[1]}</h3><p>{p[3]}</p></div>)}</div>
       <p className="actions"><L className="btn btn-ghost-light" to="/about">{t.vLink} <Arr /></L></p></div></section>
     <section className="sec tint home-sec home-quote"><div className="wrap"><figure className="quote rv">
@@ -92,8 +90,9 @@ export function Solutions() {
   useMeta('solutions');
   return <>
     <Banner crumbs={[[t.solutions]]} h1={t.solsH1} lede={t.solsLede} />
-    <section className="sec alt platform"><div className="wrap">
+    <section className="sec alt platform"><div className="wrap split" style={{ alignItems: 'center' }}>
       <div className="rv"><img className="saned saned-logo" src={IMG.saned} alt="Saned Health" width="300" height="88" /><p className="eyebrow">{t.platEyebrow}</p><h2 className="h2">{t.platTitle}</h2><p className="section-lede">{t.platLede}</p><Ticks items={t.platTicks} /></div>
+      <div className="rv"><Dashboard /></div>
     </div></section>
     {D.ZONES.map((z, i) => <section className={'sec' + (i % 2 ? '' : ' alt')} id={'zone-' + z.z} key={z.z}><div className="wrap"><SHead eyebrow={t.zone(z)} h2={z.name} p={z.short} />
       <div className="grid g3 solutions-grid">{D.SOL.filter(s => s.z === z.z).map(s => <SolCard key={s.id} s={s} />)}</div>

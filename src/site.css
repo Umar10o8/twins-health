@@ -715,10 +715,126 @@ html[dir=rtl] .flogo{object-position:right center}
 @media (max-width:1100px){.f-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.f-brand{grid-column:1/-1}}
 @media (max-width:640px){.f-top{grid-template-columns:minmax(0,1fr)}}
 
+/* ---------- home hero: Twins Health T with sample patient cards ---------- */
+.hero-viz{position:relative;min-width:0;width:100%;max-width:36rem;justify-self:center;aspect-ratio:1;font-size:clamp(.72rem,.6rem + .3vw,.85rem)}
+.hv-net{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hv-orbit{fill:none;stroke:rgba(88,195,197,.3);stroke-width:1;stroke-dasharray:2 6}
+.hv-orbit.o2{stroke:rgba(255,255,255,.1);stroke-dasharray:none}
+.hv-spin{transform-box:view-box;transform-origin:200px 200px}
+.hv-node{fill:var(--teal)}.hv-node.sm{fill:#fff;opacity:.7}
+.hv-glow{position:absolute;inset:20%;border-radius:50%;background:radial-gradient(closest-side,rgba(88,195,197,.32),rgba(88,195,197,0))}
+.hv-t{position:absolute;left:50%;top:50%;height:56%;width:auto;aspect-ratio:44/97;transform:translate(-50%,-50%);overflow:visible}
+.hv-t-fill{transform-box:fill-box;transform-origin:50% 50%}
+.hv-t-line{fill:none;stroke:var(--teal-l);stroke-width:.6;stroke-dasharray:1;opacity:0}
+.hv-card{position:absolute;display:flex;align-items:center;gap:.65em;padding:.7em .85em;border-radius:14px;background:rgba(26,34,70,.74);border:1px solid rgba(255,255,255,.16);box-shadow:0 18px 40px -18px rgba(5,8,25,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;line-height:1.3}
+.hv-card b{display:block;font-size:1em;font-weight:600}
+.hv-card small{display:block;font-size:.85em;color:var(--on-navy-muted)}
+.hv-ic{flex-shrink:0;width:2.3em;height:2.3em;border-radius:50%;display:grid;place-items:center;background:rgba(88,195,197,.16);color:var(--teal)}
+.hv-ic svg{width:1.15em;height:1.15em}
+.hv-bp{top:5%;inset-inline-start:0;flex-wrap:wrap;width:15em}
+.hv-ecg{flex-basis:100%;width:100%;height:2.2em}
+.hv-ecg path{fill:none;stroke:rgba(88,195,197,.28);stroke-width:1.5;stroke-linejoin:round}
+.hv-ecg .pulse{stroke:var(--teal);stroke-width:2;stroke-dasharray:.22 .78}
+.hv-visit{top:15%;inset-inline-end:0}
+.hv-visit .live{align-self:flex-start}
+.hv-pt{bottom:22%;inset-inline-end:-2%}
+.hero-viz .pav{flex-shrink:0;background:var(--teal);color:var(--navy-dd)}
+.hv-ring{bottom:4%;inset-inline-start:6%}
+.hv-ring svg{flex-shrink:0;width:3.2em;height:3.2em;transform:rotate(-90deg)}
+.hv-ring b{font-size:1.25em}
+.live{display:inline-block;flex-shrink:0;width:.55rem;height:.55rem;border-radius:50%;background:var(--teal)}
+.count{font-variant-numeric:tabular-nums}
+.stats .stat .count{display:inline;margin:0;font-size:inherit;line-height:inherit;color:inherit;max-width:none}
+@media (max-width:900px){.hero-viz{max-width:30rem}}
+@media (max-width:480px){.hv-visit{display:none}.hv-pt{bottom:24%}}
+
+/* ---------- charts: draw-in wrapper, home insights panel ---------- */
+.chart-box{position:relative}
+.chart.draw{position:absolute;inset:0}
+.chart .line.l2{stroke:var(--teal)}
+.platform-dash{min-width:0;align-self:center}
+.home-about-viz{grid-area:photo;min-width:0;align-self:center;justify-self:center;width:100%;max-width:30rem}
+/* chart colors follow the T mark: teal, sea, navy (lighter navy on dark surfaces) */
+.insights{--c-a:var(--teal);--c-b:var(--sea);--c-c:var(--navy);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:1rem 1.1rem}
+:root[data-theme="dark"] .insights{--c-c:#7F93D1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .insights{--c-c:#7F93D1}}
+.ins-h{display:flex;align-items:center;gap:.6rem;margin-bottom:var(--s3);font-size:var(--fs-xs);font-weight:600;color:var(--muted)}
+.ins-grid{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:var(--s4);align-items:center}
+.donut{position:relative;aspect-ratio:1}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.seg-bg,.seg{fill:none;stroke-width:10}
+.seg-bg{stroke:var(--tint2)}
+.seg.zA{stroke:var(--c-a)}.seg.zB{stroke:var(--c-b)}.seg.zC{stroke:var(--c-c)}
+.donut-c{position:absolute;inset:0;display:grid;place-content:center;gap:.15rem;padding:.9rem;text-align:center}
+.donut-c b{font-size:1.1rem;line-height:1;font-weight:600;direction:ltr}
+.donut-c small{font-size:.65rem;line-height:1.25;color:var(--muted)}
+.legend{list-style:none;margin:0;padding:0}
+.legend li{display:grid;grid-template-columns:.65rem minmax(0,1fr) auto;gap:.5rem;align-items:center;padding:.3rem 0;border-bottom:1px solid var(--line);font-size:.78rem;line-height:1.3}
+.legend li:last-child{border-bottom:0}
+.legend i{width:.65rem;height:.65rem;border-radius:3px}
+.legend i.zA{background:var(--c-a)}.legend i.zB{background:var(--c-b)}.legend i.zC{background:var(--c-c)}
+.legend small{display:block;font-size:.62rem;color:var(--muted)}
+.legend b{font-weight:600;direction:ltr}
+.moc-card{margin-top:var(--s3);border:1px solid var(--line);border-radius:var(--r-sm);padding:.55rem .75rem}
+.moc-card .cc-h{margin-bottom:.25rem;font-size:.72rem}
+.ins-bar{display:grid;grid-template-columns:minmax(5rem,6.5rem) minmax(0,1fr) 1.25rem;gap:.6rem;align-items:center;padding:.12rem 0;font-size:.7rem}
+.ins-bar b{text-align:end;font-weight:600}
+.ins-bar .mt{height:.4rem}
+.ins-bar .mt i{background:var(--sea)}
+.ins-bar.cc .mt i{background:var(--teal)}
+/* website colors for status tags, trends and the live dot */
+.risk.hi{background:#E4E8F4;color:var(--navy)}.risk.md{background:#E1EDF3;color:#2B5F78}.risk.lo{background:var(--tint);color:var(--teal-d)}
+.kpi em{color:var(--teal-d)}
+:root[data-theme="dark"] .kpi em{color:var(--teal)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kpi em{color:var(--teal)}}
+.v2030 .t-watermark{position:absolute;top:50%;inset-inline-end:4%;height:125%;width:auto;aspect-ratio:44/97;transform:translateY(-50%);fill:#fff;opacity:.04;pointer-events:none}
+@media (max-width:420px){.ins-grid{grid-template-columns:minmax(0,1fr)}.donut{width:7rem;justify-self:center}}
+
 /* ---------- reveal (gentle, opt-out with reduced motion) ---------- */
 @media (prefers-reduced-motion:no-preference){
   .rv{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
   .rv.in{opacity:1;transform:none}
+  /* cards in a grid arrive one after another; backwards fill so hover transforms still apply afterwards */
+  .grid > .rv.in{animation:rv-up .6s var(--ease) backwards}
+  .grid > .rv.in:nth-child(2){animation-delay:.08s}.grid > .rv.in:nth-child(3){animation-delay:.16s}
+  .grid > .rv.in:nth-child(4){animation-delay:.24s}.grid > .rv.in:nth-child(5){animation-delay:.32s}
+  .grid > .rv.in:nth-child(n+6){animation-delay:.4s}
+  a.card.rv.in{transition:opacity .55s var(--ease),border-color .18s,box-shadow .25s,transform .25s var(--ease)}
+  a.card:hover{transform:translateY(-4px)}
+  /* hero copy, then the T draws itself, fills in, and the patient cards pop in and float */
+  .hero .wrap > div:first-child > *{animation:rv-up .8s var(--ease) backwards}
+  .hero .wrap > div:first-child > :nth-child(2){animation-delay:.1s}
+  .hero .wrap > div:first-child > :nth-child(3){animation-delay:.2s}
+  .hero .wrap > div:first-child > :nth-child(4){animation-delay:.3s}
+  .hv-t-line{animation:hv-draw 2.2s var(--ease) .2s backwards}
+  .hv-t-fill{animation:hv-fill 1.2s var(--ease) 1s backwards}
+  .hv-glow{animation:hv-breathe 5s ease-in-out infinite alternate}
+  .hv-spin{animation:hv-spin 40s linear infinite}
+  .hv-spin.rev{animation-duration:60s;animation-direction:reverse}
+  .hv-card{animation:hv-pop .7s var(--ease) backwards,hv-float 6s ease-in-out infinite alternate}
+  .hv-bp{animation-delay:1.3s,2s}.hv-visit{animation-delay:1.5s,2.8s}.hv-pt{animation-delay:1.7s,3.4s}.hv-ring{animation-delay:1.9s,2.4s}
+  .hv-ring .rfg{animation:ring-fill 1.6s var(--ease) 2.1s backwards}
+  .hv-ecg .pulse{animation:ecg 2.4s linear infinite}
+  .live{animation:live 2s ease-out infinite}
+  /* charts draw in when their section is revealed */
+  .rv.in .chart.draw{animation:draw-x 1.6s var(--ease) .35s backwards}
+  .rv.in .seg{animation:seg-in 1s var(--ease) backwards;animation-delay:calc(.3s + var(--k) * .25s)}
+  .rv.in .ins-bar .mt i{animation:bar-grow 1s var(--ease) backwards;animation-delay:calc(.4s + var(--k) * .08s)}
+  .rv.in .ph-ring .rfg{animation:ring-fill 1.4s var(--ease) .6s backwards}
+  .rv.in .phone{animation:hv-float 6s ease-in-out 1.5s infinite alternate}
 }
+@keyframes rv-up{from{opacity:0;transform:translateY(16px)}}
+@keyframes hv-draw{0%{stroke-dashoffset:1;opacity:1}75%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes hv-fill{from{opacity:0;transform:translateY(8px) scale(.94)}}
+@keyframes hv-breathe{from{opacity:.55;scale:.92}to{opacity:1;scale:1.06}}
+@keyframes hv-spin{to{rotate:360deg}}
+@keyframes hv-pop{from{opacity:0;scale:.9;translate:0 12px}}
+@keyframes hv-float{to{translate:0 -10px}}
+@keyframes ring-fill{from{stroke-dashoffset:201}}
+@keyframes ecg{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes live{from{box-shadow:0 0 0 0 rgba(88,195,197,.55)}to{box-shadow:0 0 0 .6em rgba(88,195,197,0)}}
+@keyframes draw-x{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes seg-in{from{stroke-dasharray:0 264}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 html.no-js .rv{opacity:1;transform:none}
+@keyframes bar-grow{from{width:0}}

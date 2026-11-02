@@ -6,11 +6,11 @@ import { Banner, Ticks, usePageMeta } from '../components/common.jsx';
 import { MapCard } from '../components/graphics.jsx';
 
 const EMAIL = 'sales@twinshealth.sa';
-/* Google Apps Script web app (Deploy > Web app URL, ending in /exec). It adds each request as a row in the
-   contact Google Sheet and emails a notification. */
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwp4kBtjpNTe9El7qOw-OxObj0mh-BcUYLFwxUW2rdH6uojY9PpMs1NdRyv-VAIZgGHdQ/exec';
+/* Web3Forms emails each request to the inbox the access key was created with. The key is public by design. */
+const FORM_URL = 'https://api.web3forms.com/submit';
+const FORM_KEY = '8a733ac1-aee3-4e50-905f-0f637475e1ff';
 
-/* Demo request form. On submit it posts the request to SHEET_URL. */
+/* Demo request form. On submit it posts the request to FORM_URL. */
 function DemoForm({ product }) {
   const { t, D, lang } = useLang();
   const F = t.form;
@@ -34,17 +34,20 @@ function DemoForm({ product }) {
     /* No solution field: a product passed from a solution page (?product=) still goes into the email */
     setBusy(true); setMsg({ cls: '', text: F.sending });
     try {
-      /* text/plain keeps this a simple request, which Apps Script accepts without a CORS preflight */
-      const r = await fetch(SHEET_URL, {
+      /* Web3Forms sets Reply-To to the visitor's email, so replying in Outlook goes straight to them */
+      const r = await fetch(FORM_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          name: f.name, org: f.org || '', email: f.email, phone: f.phone,
-          solution: preset ? preset.name : '', message: f.message || '', lang, page: location.href,
+          access_key: FORM_KEY,
+          subject: 'New demo request: ' + f.name + (f.org ? ' (' + f.org + ')' : ''),
+          from_name: 'Twins Health website',
+          name: f.name, organization: f.org || '-', email: f.email, phone: f.phone,
+          solution: preset ? preset.name : '-', message: f.message || '-', language: lang, page: location.href,
         }),
       });
       const res = await r.json().catch(() => ({}));
-      if (!r.ok || res.result !== 'success') throw new Error(res.error || r.status);
+      if (!r.ok || !res.success) throw new Error(res.message || r.status);
       form.reset(); setMsg({ cls: ' ok', text: F.ok }); setSent(true);
       setTimeout(() => sentRef.current?.focus());
     } catch {
