@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { L, useLang } from '../i18n.jsx';
 import { Icon, Arr, SOL_ICON } from '../icons.jsx';
 import { IMG, SITE_URL } from '../config.js';
+import { TWatermark } from './graphics.jsx';
 
 export const Pattern = () => <div className="pattern" aria-hidden="true" />;
 
@@ -28,7 +29,7 @@ export function usePageMeta(title, desc) {
 export function Banner({ crumbs, h1, lede, children }) {
   const { t } = useLang();
   return (
-    <section className="banner"><Pattern /><div className="wrap"><div>
+    <section className="banner"><Pattern /><TWatermark /><div className="wrap"><div>
       <nav className="crumbs" aria-label="Breadcrumb"><ol><li><L to="/">{t.home}</L></li>
         {crumbs.map((c, i) => i === crumbs.length - 1
           ? <li key={i} aria-current="page">{c[0]}</li>
@@ -44,7 +45,7 @@ export const SHead = ({ eyebrow, h2, p, center }) => (
 
 export function Cta() {
   const { t } = useLang();
-  return <section className="cta"><div className="wrap"><div><h2>{t.ctaT}</h2><p>{t.ctaP}</p></div><div className="btns"><L className="btn btn-primary" to="/contact">{t.demo} <Arr /></L><L className="btn btn-outline" to="/solutions">{t.explore}</L></div></div></section>;
+  return <section className="cta"><TWatermark /><div className="wrap"><div><h2>{t.ctaT}</h2><p>{t.ctaP}</p></div><div className="btns"><L className="btn btn-primary" to="/contact">{t.demo} <Arr /></L><L className="btn btn-outline" to="/solutions">{t.explore}</L></div></div></section>;
 }
 
 /* Icon card used across pages: [icon, title, text] */

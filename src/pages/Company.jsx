@@ -5,7 +5,7 @@ import { L, useLang, coLink, CO_KEYS } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
-import { Twin } from '../components/graphics.jsx';
+import { Twin, Count } from '../components/graphics.jsx';
 import { NotFound } from './Main.jsx';
 
 const RM = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,11 +24,11 @@ function AboutUs() {
       <div className="rv co-art"><img className="co-photo" src={IMG.aboutTerrace} alt="" width="1600" height="893" /></div>
     </div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.doT} /><div className="grid g3">{a.do.map((d, i) => <IconCard key={i} item={d} className="co-cap" />)}</div></div></section>
-    <section className="glance"><div className="wrap"><h2 className="sr-only">{a.glanceT}</h2><div className="glance-grid rv">{a.glance.map((g, i) => <div className="stat" key={i}><b>{g[0]}</b><span>{g[1]}</span></div>)}</div></div></section>
+    <section className="glance"><div className="wrap"><h2 className="sr-only">{a.glanceT}</h2><div className="glance-grid rv">{a.glance.map((g, i) => <div className="stat" key={i}><b><Count value={g[0]} /></b><span>{g[1]}</span></div>)}</div></div></section>
     <section className="sec"><div className="wrap"><VisionMission className="co-vm" vT={a.visionT} v={a.vision} mT={a.missionT} m={a.mission} /></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.valuesT} /><div className="grid g5">{a.values.map((v, i) => <IconCard key={i} item={v} />)}</div></div></section>
     <section className="sec v2030"><Pattern /><div className="wrap" style={{ position: 'relative' }}><div className="split" style={{ alignItems: 'center' }}><div className="rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2" style={{ color: '#fff' }}>{a.v2030T}</h2></div><p className="rv co-light">{a.v2030}</p></div></div></section>
-    <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.mocT} /><div className="moc"><div className="big rv"><b>42</b><span>{a.mocBig}</span></div><div className="card rv co-text"><p>{a.moc}</p></div></div></div></section>
+    <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.mocT} /><div className="moc"><div className="big rv"><b><Count value="42" /></b><span>{a.mocBig}</span></div><div className="card rv co-text"><p>{a.moc}</p></div></div></div></section>
     <section className="sec alt"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.aiT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{a.ai}</p></div><div className="rv"><Twin /></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.qT} /><div className="grid g4 badges">{a.q.map((b, i) => <BadgeCard key={i} item={b} logo={BADGE_LOGOS[i]} />)}</div></div></section>
     <section className="cta co-cta"><div className="wrap"><div><h2>{a.ctaT}</h2><p>{a.ctaP}</p><L className="btn btn-primary" to="/contact">{a.ctaBtn} <Arr /></L></div>
