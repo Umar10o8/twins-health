@@ -948,3 +948,9 @@ html[dir=rtl] .frag-lines{transform:scaleX(-1)}
 @keyframes break-pulse{50%{scale:1.12}}
 @keyframes sn-ripple{from{opacity:.7;scale:1}to{opacity:0;scale:8}}
 @keyframes sn-twinkle{0%,100%{opacity:.35}30%{opacity:1}}
+
+/* ---------- page headers: quieter version of the home hero art ---------- */
+.b-art{position:absolute;top:50%;inset-inline-end:clamp(-6rem,-2rem - 4vw,0rem);width:min(30rem,48vw);aspect-ratio:1;transform:translateY(-50%);opacity:.55;pointer-events:none}
+.b-art .hv-glow{inset:24%}
+.banner .wrap > div{position:relative;max-width:min(52rem,62%)}
+@media (max-width:760px){.b-art{width:20rem;inset-inline-end:-10rem;opacity:.18}.banner .wrap > div{max-width:none}}

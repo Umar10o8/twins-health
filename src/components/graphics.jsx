@@ -35,21 +35,32 @@ const ECG = 'M0 20 H34 l5 -9 l6 19 l6 -27 l6 17 l4 0 H82 l4 -6 l4 6 H120';
 
 const Ring = () => <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" className="rbg" /><circle cx="40" cy="40" r="32" className="rfg" /></svg>;
 
+/* Care network rings and the T that draws itself, shared by the home hero and the page headers */
+const Net = () => (
+  <svg className="hv-net" viewBox="0 0 400 400">
+    <circle className="hv-orbit" cx="200" cy="200" r="120" /><circle className="hv-orbit o2" cx="200" cy="200" r="176" />
+    <g className="hv-spin"><circle className="hv-node" cx="200" cy="80" r="5" /><circle className="hv-node sm" cx="320" cy="200" r="3.5" /></g>
+    <g className="hv-spin rev"><circle className="hv-node sm" cx="200" cy="376" r="4" /><circle className="hv-node" cx="24" cy="200" r="5" /></g>
+  </svg>
+);
+const HeroT = ({ id }) => (
+  <svg className="hv-t" viewBox="298 149.5 44 97">
+    <defs><linearGradient id={id} gradientUnits="userSpaceOnUse" x1="302.5" y1="234.1" x2="347.4" y2="162.4"><stop offset="0" stopColor="#fff" /><stop offset="1" stopColor="#59C4C5" /></linearGradient></defs>
+    <path className="hv-t-fill" d={T_PATH} fill={'url(#' + id + ')'} /><path className="hv-t-line" d={T_PATH} pathLength="1" />
+  </svg>
+);
+
+/* Page headers: a quieter version of the home hero art, so the page title still leads */
+export const BannerArt = () => <div className="b-art" aria-hidden="true"><Net /><span className="hv-glow" /><HeroT id="baTg" /></div>;
+
 /* Home hero: the T assembles inside a slowly turning care network, with sample patient cards floating around it */
 export function HeroVisual() {
   const m = useLang().t.mock, p = m.rows[2];
   return (
     <div className="hero-viz" aria-hidden="true">
-      <svg className="hv-net" viewBox="0 0 400 400">
-        <circle className="hv-orbit" cx="200" cy="200" r="120" /><circle className="hv-orbit o2" cx="200" cy="200" r="176" />
-        <g className="hv-spin"><circle className="hv-node" cx="200" cy="80" r="5" /><circle className="hv-node sm" cx="320" cy="200" r="3.5" /></g>
-        <g className="hv-spin rev"><circle className="hv-node sm" cx="200" cy="376" r="4" /><circle className="hv-node" cx="24" cy="200" r="5" /></g>
-      </svg>
+      <Net />
       <span className="hv-glow" />
-      <svg className="hv-t" viewBox="298 149.5 44 97">
-        <defs><linearGradient id="hvTg" gradientUnits="userSpaceOnUse" x1="302.5" y1="234.1" x2="347.4" y2="162.4"><stop offset="0" stopColor="#fff" /><stop offset="1" stopColor="#59C4C5" /></linearGradient></defs>
-        <path className="hv-t-fill" d={T_PATH} fill="url(#hvTg)" /><path className="hv-t-line" d={T_PATH} pathLength="1" />
-      </svg>
+      <HeroT id="hvTg" />
       <div className="hv-card hv-bp"><span className="hv-ic"><Icon name="activity" /></span><div><b>{m.cards[2][1]}</b><small>{m.cards[2][2]}</small></div>
         <svg className="hv-ecg" viewBox="0 0 120 32" preserveAspectRatio="none"><path d={ECG} /><path className="pulse" d={ECG} pathLength="1" /></svg></div>
       <div className="hv-card hv-visit"><span className="hv-ic"><Icon name="video" /></span><div><b>{m.cards[0][1]}</b><small>{m.cards[0][2]}</small></div><i className="live" /></div>
