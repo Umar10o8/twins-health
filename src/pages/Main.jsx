@@ -3,7 +3,7 @@ import { L, useLang, Html } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
-import { Twin, HeroVisual, Dashboard, Insights, Count, TWatermark } from '../components/graphics.jsx';
+import { HeroVisual, Dashboard, Insights, Count, TWatermark, DataFlow, Fragmented } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
 
@@ -70,7 +70,7 @@ export function About() {
     <section className="sec"><div className="wrap">
       <div className="split story-grid">
         <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.storyP1}</p><p>{t.storyP2}</p></div>
-        <div className="rv story-photo"><img src={IMG.familyApp} alt="" width="2000" height="1116" loading="lazy" /></div>
+        <div className="rv story-photo"><Fragmented /></div>
       </div>
       <VisionMission className="co-vm story-vm" vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} />
     </div></section>
@@ -140,7 +140,7 @@ export function Innovation() {
       <h3 style={{ fontSize: '1.25rem', margin: '3rem 0 1.25rem' }}>{t.vbcHowT}</h3>
       <div className="grid g3">{t.vbc.map((v, i) => <div className="card rv" key={i}><span className="ic"><Icon name={v[0]} /></span><h4 style={{ fontSize: '1.05rem', marginBottom: '.4rem' }}>{v[1]}</h4><p>{v[2]}</p></div>)}</div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={t.aiEyebrow} h2={t.aiT} p={t.aiLede} />
-      <div className="split" style={{ alignItems: 'center' }}><div className="rv innovation-visual"><img src={IMG.virtualCare} alt="" width="843" height="562" loading="lazy" /><div className="innovation-twin"><Twin /></div></div><div className="prose rv"><p className="lead">{t.aiP1}</p><p>{t.aiP2}</p></div></div>
+      <div className="split" style={{ alignItems: 'center' }}><div className="rv innovation-visual"><DataFlow /></div><div className="prose rv"><p className="lead">{t.aiP1}</p><p>{t.aiP2}</p></div></div>
       <div className="grid g2" style={{ marginTop: '2.5rem' }}><ListCard title={t.todayT} items={t.today} /><ListCard title={t.nextT} items={t.nextL} className="next" /></div></div></section>
     <Cta />
   </>;

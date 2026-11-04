@@ -145,3 +145,65 @@ export function MapCard() {
     <div className="card mapcard" aria-hidden="true"><svg viewBox="0 0 400 250"><path className="rd" d="M-10 70 L410 50" /><path className="rd" d="M-10 200 L410 180" /><path className="rd" d="M110 -10 L130 260" /><path className="rd" d="M300 -10 L315 260" /><path className="main" d="M-10 135 L410 115" /><path className="rd2" d="M-10 20 L410 5" /><path className="rd2" d="M40 -10 L55 260" /><path className="rd2" d="M210 -10 L220 260" /><path className="rd2" d="M370 -10 L380 260" /><path className="pin" d="M205 62c-20 0-35 15-35 34 0 26 35 63 35 63s35-37 35-63c0-19-15-34-35-34zm0 47a13 13 0 1 1 0-26 13 13 0 0 1 0 26z" /></svg><span className="chip">{t.mapLabel}</span></div>
   );
 }
+
+/* Innovation: data from many sources flows through AI, cloud and interoperability into decisions for three audiences.
+   Lines are drawn left to right and mirrored in RTL by CSS. */
+const rows = n => Array.from({ length: n }, (_, i) => ((i + .5) / n * 100).toFixed(1));
+export function DataFlow() {
+  const v = useLang().t.viz.data;
+  return (
+    <div className="dflow" role="img" aria-label={v.aria}>
+      <svg className="df-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {rows(v.src.length).map((y, i) => <path key={'s' + i} d={`M18 ${y} C 36 ${y}, 34 50, 50 50`} />)}
+        {rows(v.out.length).map((y, i) => <path key={'o' + i} className="out" d={`M50 50 C 66 50, 64 ${y}, 82 ${y}`} />)}
+      </svg>
+      <ul className="df-col df-src">{v.src.map(([ic, l]) => <li key={l}><Icon name={ic} />{l}</li>)}</ul>
+      <div className="df-hub"><span className="df-ring" /><ul>{v.hub.map(([ic, l]) => <li key={l}><Icon name={ic} />{l}</li>)}</ul></div>
+      <ul className="df-col df-out">{v.out.map(([ic, l]) => <li key={l}><Icon name={ic} />{l}</li>)}</ul>
+    </div>
+  );
+}
+
+/* About, our story: one patient, with medical, mental and social records in separate systems that don't connect.
+   Card centres and break points are in % of the box (mirrored for Arabic); the SVG lines use the same 0-100 coordinates. */
+const FRAG = [{ c: [20, 18], m: [35, 34] }, { c: [80, 38], m: [65, 44] }, { c: [27, 82], m: [34, 72] }];
+export function Fragmented() {
+  const { t, lang } = useLang(), v = t.viz.frag, X = x => (lang === 'ar' ? 100 - x : x) + '%';
+  return (
+    <div className="frag" role="img" aria-label={v.aria}>
+      <svg className="frag-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {FRAG.map(({ c, m }, i) => <g key={i}>
+          <path d={`M50 50 L${50 + (m[0] - 50) * .7} ${50 + (m[1] - 50) * .7}`} />
+          <path d={`M${m[0] + (c[0] - m[0]) * .3} ${m[1] + (c[1] - m[1]) * .3} L${c[0]} ${c[1]}`} />
+        </g>)}
+      </svg>
+      <div className="frag-patient"><svg viewBox="-70 28 140 220"><circle cx="0" cy="56" r="26" /><path transform="translate(0 92)" d={BODY} /></svg><b>{v.patient}</b></div>
+      {v.sys.map(([ic, l], i) => <div className={'frag-card f' + i} key={l} style={{ left: X(FRAG[i].c[0]), top: FRAG[i].c[1] + '%' }}><span className="frag-ic"><Icon name={ic} /></span><b>{l}</b><i /><i /></div>)}
+      {FRAG.map(({ m }, i) => <span className={'frag-break b' + i} key={i} style={{ left: X(m[0]), top: m[1] + '%' }}><Icon name="unlink" /></span>)}
+    </div>
+  );
+}
+
+/* History, today and beyond: a care network spreading outward from Riyadh in rings */
+const NET = (() => {
+  const C = [160, 250], ring = (r, n, off) => Array.from({ length: n }, (_, i) => { const a = off + i / n * 2 * Math.PI; return [C[0] + r * Math.cos(a), C[1] + r * Math.sin(a)]; });
+  const R = [ring(62, 6, -Math.PI / 2), ring(118, 10, -Math.PI / 2.4), ring(178, 14, -Math.PI / 2.2)];
+  const near = (p, list) => list.reduce((b, q) => (Math.hypot(q[0] - p[0], q[1] - p[1]) < Math.hypot(b[0] - p[0], b[1] - p[1]) ? q : b));
+  const links = [...R[0].map(p => [C, p, 0]), ...R[1].map(p => [near(p, R[0]), p, 1]), ...R[2].map(p => [near(p, R[1]), p, 2])];
+  return { C, R, links };
+})();
+export function ScaleNet() {
+  const v = useLang().t.viz.scale;
+  const { C, R, links } = NET;
+  return (
+    <div className="jr-today-viz">
+      <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label={v.aria}>
+        <g className="sn-globe"><circle cx={C[0]} cy={C[1]} r="178" /><ellipse cx={C[0]} cy={C[1]} rx="70" ry="178" /><ellipse cx={C[0]} cy={C[1]} rx="130" ry="178" /><line x1={C[0] - 178} x2={C[0] + 178} y1={C[1]} y2={C[1]} /><ellipse cx={C[0]} cy={C[1]} rx="178" ry="60" /></g>
+        {[0, 1, 2].map(i => <circle key={i} className="sn-ripple" cx={C[0]} cy={C[1]} r="20" style={{ '--d': i * 1.2 + 's' }} />)}
+        <g className="sn-links">{links.map(([a, b, k], i) => <line key={i} className={'l' + k} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} />)}</g>
+        {R.map((ring, k) => ring.map((p, i) => <circle key={k + '-' + i} className={'sn-node n' + k} cx={p[0]} cy={p[1]} r={[5, 4, 3][k]} style={{ '--d': k * .6 + (i % 3) * .2 + 's' }} />))}
+        <circle className="sn-hub" cx={C[0]} cy={C[1]} r="10" /><text className="sn-label" x={C[0]} y={C[1] + 30}>{v.hub}</text>
+      </svg>
+    </div>
+  );
+}

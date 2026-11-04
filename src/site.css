@@ -860,3 +860,91 @@ html.no-js .rv{opacity:1;transform:none}
 @keyframes img-in{from{opacity:.4;clip-path:inset(5% 5% 5% 5% round 16px)}to{opacity:1;clip-path:inset(0 round 16px)}}
 @keyframes road{to{stroke-dashoffset:-38}}
 @keyframes pin-bob{50%{translate:0 -6px}}
+
+/* ---------- Arabic: T marks face the same way as the Arabic logo ---------- */
+html[dir=rtl] .hv-t{transform:translate(-50%,-50%) scaleX(-1)}
+html[dir=rtl] .t-watermark{transform:translateY(-50%) scaleX(-1)}
+
+/* ---------- innovation: data from many sources through AI, cloud and interoperability to decisions ---------- */
+/* rows split the content box evenly so each chip centre sits where its line ends (y = (i + .5) / n) */
+.dflow{--pad:clamp(1rem,.6rem + 1.2vw,1.75rem);position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);align-items:stretch;gap:1rem;min-height:22rem;padding:var(--pad);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.df-lines{position:absolute;inset:var(--pad);width:calc(100% - 2 * var(--pad));height:calc(100% - 2 * var(--pad));pointer-events:none}
+html[dir=rtl] .df-lines{transform:scaleX(-1)}
+.df-lines path{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-dasharray:3 5;vector-effect:non-scaling-stroke;opacity:.7}
+.df-lines path.out{stroke:var(--sea)}
+.df-col{position:relative;display:grid;grid-auto-rows:1fr;align-items:center;gap:.55rem;list-style:none;margin:0;padding:0}
+.df-col li{display:flex;align-items:center;gap:.45rem;padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow-sm);font-size:.75rem;font-weight:500;line-height:1.25}
+.df-col svg{flex-shrink:0;width:.95rem;height:.95rem;color:var(--teal-d)}
+.df-out li{background:var(--tint);border-color:transparent;font-weight:600}
+.df-out svg{color:var(--sea)}
+.df-hub{position:relative;align-self:center;justify-self:center;display:grid;place-items:center;width:100%;max-width:11rem;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--navy),var(--navy-dd));color:#fff;box-shadow:0 18px 40px -18px rgba(20,27,64,.6)}
+.df-hub ul{position:relative;display:grid;gap:.3rem;list-style:none;margin:0;padding:0}
+.df-hub li{display:flex;align-items:center;gap:.35rem;padding:.2rem .5rem;border-radius:999px;background:rgba(255,255,255,.08);font-size:.7rem;font-weight:600}
+.df-hub svg{width:.85rem;height:.85rem;color:var(--teal)}
+.df-ring{position:absolute;inset:-8px;border:1px dashed var(--teal);border-radius:50%;opacity:.6}
+@media (max-width:600px){
+  .dflow{grid-template-columns:minmax(0,1fr);min-height:0}
+  .df-lines{display:none}
+  .df-col{display:flex;flex-wrap:wrap;justify-content:center;grid-auto-rows:auto}
+  .df-hub{max-width:10rem}
+}
+
+/* ---------- about, our story: one patient, records in disconnected systems ---------- */
+.frag{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,var(--surface),var(--tint) 75%)}
+.frag-lines{position:absolute;inset:0;width:100%;height:100%}
+html[dir=rtl] .frag-lines{transform:scaleX(-1)}
+.frag-lines path{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 5;vector-effect:non-scaling-stroke;opacity:.55}
+.frag-patient{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:.4rem;width:6rem}
+.frag-patient svg{width:3.6rem;height:auto;fill:var(--sea)}
+.frag-patient b{padding:.15rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.75rem;white-space:nowrap}
+.frag-card{--acc:var(--teal);position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.4rem .5rem;width:clamp(7.5rem,6rem + 5vw,10rem);padding:.65rem .75rem;border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
+.frag-card.f0{--rot:-4deg;--fx:-8px;--fy:-6px}
+.frag-card.f1{--acc:var(--sea);--rot:3deg;--fx:8px;--fy:-4px}
+.frag-card.f2{--acc:var(--navy);--rot:-2deg;--fx:-6px;--fy:6px}
+:root[data-theme="dark"] .frag-card.f2{--acc:#7F93D1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .frag-card.f2{--acc:#7F93D1}}
+.frag-ic{display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:8px;background:var(--tint);color:var(--acc)}
+.frag-ic svg{width:.9rem;height:.9rem}
+.frag-card b{font-size:.75rem;line-height:1.25}
+.frag-card i{grid-column:1/-1;height:.35rem;border-radius:4px;background:var(--tint2)}
+.frag-card i:last-child{width:60%}
+.frag-break{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:1.6rem;height:1.6rem;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--teal-d)}
+.frag-break svg{width:.85rem;height:.85rem}
+@media (max-width:600px){
+  .story-photo{aspect-ratio:1}
+  .frag-card{width:7rem;padding:.5rem .55rem;gap:.3rem .4rem}
+  .frag-card b{font-size:.68rem}
+  .frag-ic{width:1.35rem;height:1.35rem}
+  .frag-patient svg{width:2.8rem}
+  .frag-patient b{font-size:.68rem}
+}
+
+/* ---------- history, today and beyond: network growing out from Riyadh ---------- */
+.jr-today-viz{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--on-navy-line);border-radius:var(--r);background:radial-gradient(circle at 50% 62%,rgba(88,195,197,.18),rgba(255,255,255,.03) 70%)}
+.jr-today-viz svg{display:block;width:100%;height:100%}
+@media (max-width:860px){.jr-today-viz{aspect-ratio:16/10}}
+.sn-globe *{fill:none;stroke:rgba(255,255,255,.1);stroke-width:1}
+.sn-links line{stroke:rgba(88,195,197,.45);stroke-width:1;stroke-dasharray:3 5}
+.sn-links .l2{stroke:rgba(88,195,197,.25)}
+.sn-node{fill:var(--teal)}.sn-node.n1{fill:#9FE0E2}.sn-node.n2{fill:#fff;opacity:.55}
+.sn-ripple{fill:none;stroke:var(--teal);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.sn-hub{fill:var(--teal);stroke:#fff;stroke-width:3}
+.sn-label{fill:#fff;font-size:13px;font-weight:600;text-anchor:middle}
+
+@media (prefers-reduced-motion:no-preference){
+  .df-lines path,.sn-links line{animation:dash-flow 1.4s linear infinite}
+  .df-ring{animation:hv-spin 24s linear infinite}
+  .rv.in .df-col li{animation:rv-up .5s var(--ease) backwards}
+  .rv.in .df-col li:nth-child(2){animation-delay:.08s}.rv.in .df-col li:nth-child(3){animation-delay:.16s}
+  .rv.in .df-col li:nth-child(4){animation-delay:.24s}.rv.in .df-col li:nth-child(5){animation-delay:.32s}
+  .frag-card{animation:frag-drift 7s ease-in-out infinite alternate}
+  .frag-card.f1{animation-duration:8s;animation-delay:-2s}.frag-card.f2{animation-duration:9s;animation-delay:-4s}
+  .frag-break{animation:break-pulse 2.4s ease-in-out infinite}
+  .sn-ripple{animation:sn-ripple 3.6s ease-out infinite;animation-delay:var(--d)}
+  .sn-node{animation:sn-twinkle 3.6s ease-in-out infinite;animation-delay:var(--d)}
+}
+@keyframes dash-flow{to{stroke-dashoffset:-16}}
+@keyframes frag-drift{to{translate:var(--fx) var(--fy)}}
+@keyframes break-pulse{50%{scale:1.12}}
+@keyframes sn-ripple{from{opacity:.7;scale:1}to{opacity:0;scale:8}}
+@keyframes sn-twinkle{0%,100%{opacity:.35}30%{opacity:1}}

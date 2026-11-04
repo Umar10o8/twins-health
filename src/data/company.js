@@ -6,7 +6,7 @@ const CO={en:{
   h1:"Digital health transformation, from Saudi Arabia to the world.",
   sub:"Twins Health builds the platforms that connect providers, payers, governments and patients around one shared patient record, so every patient receives coordinated care.",
   whoT:"Who we are",
-  who:["Twins Health is the healthcare company of Obeikan Investment Group, a Saudi group that has built businesses since 1982. We help healthcare organisations go digital, through our own products and deep transformation expertise. One conviction guides everything we do: healthcare should look after the whole person, connected from hospital to home.",
+  who:["Twins Health is the digital health company of Obeikan Investment Group, a Saudi group that has built businesses since 1982. We help healthcare organisations go digital, through our own products and deep transformation expertise. One conviction guides everything we do: healthcare should look after the whole person, connected from hospital to home.",
        "Our flagship platform, Saned Health, brings medical, mental and social care onto one cloud system shared by providers, patients and payers. It was launched in 2021 to solve a clear problem. Care was fragmented, and patients needed a platform that treated them as a whole person rather than a series of separate conditions.",
        "Built in Saudi Arabia for local regulations, local workflows and Arabic-first users, our technology is designed to scale across the region and beyond."],
   doT:"What we do",
@@ -64,10 +64,10 @@ const CO={en:{
   team:[["Rizwan Haq","CEO, Twins Health","p1"],["Dr. Patrick Zola","Senior Adviser, Healthcare Transformation","p2"],["Shakeeb Ahmed","Director, Digital Health","p3"],["Mohamed Elmokadm","Sales and Business Development Manager","p4"],["Abdulmohsen Albrag","Business Relationships Director","p5"]]
  },
  journey:{
-  h1:"From one cluster to a national platform.",
-  sub:"How a Saudi group's move into healthcare technology became Saned Health, and how Saned Health became Twins Health.",
+  h1:"From Fragmented Care to Value-Based Healthcare.",
+  sub:"Discover how Twins Health's journey in healthcare technology led to Saned Health, its flagship platform designed to connect care, empower care teams, and support better health outcomes.",
   ms:[["1982","1982","Obeikan Investment Group is founded","Obeikan begins building businesses in Saudi Arabia, growing from manufacturing and education into a group with 16 offices worldwide, 20 factories and more than 3,000 employees. Four decades of group heritage become the foundation for its later move into healthcare."],
-      ["2021","2021","Obeikan Health enters healthcare technology","Obeikan Health is formed as the group's digital health and medical technology arm, with a mandate to partner, co-create and invest in solutions that create shared value for patient, payer and provider. International partnerships with IBM Watson Health (later Merative), Ada Health and Materialise bring AI decision support, symptom assessment and 3D surgical planning into the portfolio. Saned Health is launched the same year to solve a clear problem: fragmented care."],
+      ["2019","2019","Obeikan Investment Group Enters the Healthcare Technology Industry","Obeikan Investment Group established its digital health and medical technology arm, with a mandate to partner, co-create, and invest in solutions that create shared value for patients, payers, and providers."],
       ["2021","October 2021","Chronic disease case management with Riyadh First Health Cluster","Saned Case Management is deployed with the Ministry of Health's Riyadh First Health Cluster. More than 2,000 real patients are enrolled with active care plans, 25 trained care managers begin work with a plan to grow to 150, and coverage is set to extend to 27 primary health centres. This deployment becomes the reference site for everything that follows."],
       ["2022","November 2021 to Q1 2022","Remote monitoring and virtual care","Chronic disease management with remote monitoring, home care visits and virtual consultations launches with TCS. Virtual Care follows with the Ministry of Health, including mental health services and second opinion consultations. Saned now supports six clinical pathways with a web-based EMR, a patient app, e-prescription, wearable integration and AI-based care plans."],
       ["2022","January 2022","Saned Health named the flagship platform","Obeikan Health's partnership thesis positions the group as a Middle East digital health accelerator and names Saned Health its flagship platform, connecting patients, providers and payers through home care, telemedicine, chronic disease management, social care and population health. A Saned Command Center concept brings centralised monitoring and clinical staff mobilisation to the platform. A second venture, wasfatynow, is designed to deliver e-prescriptions from the national Wasfaty system to patients' homes."],
@@ -81,7 +81,7 @@ const CO={en:{
  META:{about:"Twins Health builds the platforms that connect providers, payers, governments and patients around one shared patient record, so every patient receives coordinated care.",
        team:"Saned Health is built by people who understand both the clinic and the code, and who measure their work by what changes for patients.",
        leadership:"Our leadership team combines group heritage, clinical transformation expertise and hands-on experience delivering digital health at national scale.",
-       history:"How a Saudi group's move into healthcare technology became Saned Health, and how Saned Health became Twins Health."}
+       history:"Discover how Twins Health's journey in healthcare technology led to Saned Health, its flagship platform designed to connect care, empower care teams, and support better health outcomes."}
 },
 ar:{
  nav:"الشركة",aboutUs:"عن الشركة",teamL:"فريقنا",mgmtL:"إدارتنا",journeyL:"مسيرتنا",
@@ -90,7 +90,7 @@ ar:{
   h1:"التحول الصحي الرقمي، من السعودية إلى العالم.",
   sub:"تبني توينز هيلث المنصات التي تربط مقدمي الخدمات وجهات التأمين والجهات الحكومية والمرضى حول سجل مريض موحد، ليحصل كل مريض على رعاية منسقة.",
   whoT:"من نحن",
-  who:["توينز هيلث هي شركة الرعاية الصحية التابعة لمجموعة العبيكان للاستثمار، وهي مجموعة سعودية تبني الأعمال منذ عام 1982. نساعد المؤسسات الصحية على التحول الرقمي عبر منتجاتنا وخبرتنا العميقة في التحول. وتقودنا قناعة واحدة في كل ما نقوم به: ينبغي للرعاية الصحية أن ترعى الإنسان كاملًا، في رعاية متصلة من المستشفى إلى المنزل.",
+  who:["توينز هيلث هي شركة الصحة الرقمية التابعة لمجموعة العبيكان للاستثمار، وهي مجموعة سعودية تبني الأعمال منذ عام 1982. نساعد المؤسسات الصحية على التحول الرقمي عبر منتجاتنا وخبرتنا العميقة في التحول. وتقودنا قناعة واحدة في كل ما نقوم به: ينبغي للرعاية الصحية أن ترعى الإنسان كاملًا، في رعاية متصلة من المستشفى إلى المنزل.",
        "تجمع منصتنا الرئيسية ساند للصحة الرعاية الطبية والنفسية والاجتماعية في نظام سحابي واحد يتشاركه مقدمو الخدمات والمرضى وجهات التأمين. وقد أُطلقت عام 2021 لحل مشكلة واضحة؛ فقد كانت الرعاية مجزأة، واحتاج المرضى إلى منصة تتعامل معهم بوصفهم إنسانًا كاملًا لا سلسلة من الحالات المنفصلة.",
        "صُممت تقنيتنا في السعودية وفق الأنظمة المحلية وإجراءات العمل المحلية ومستخدمين لغتهم الأولى العربية، وهي مهيأة للتوسع في المنطقة وخارجها."],
   doT:"ماذا نقدم",
@@ -148,10 +148,10 @@ ar:{
   team:[["رضوان الحق","الرئيس التنفيذي، توينز هيلث","p1"],["د. باتريك زولا","مستشار أول، التحول في الرعاية الصحية","p2"],["شكيب أحمد","مدير الصحة الرقمية","p3"],["محمد المقدم","مدير المبيعات وتطوير الأعمال","p4"],["عبدالمحسن البراك","مدير علاقات الأعمال","p5"]]
  },
  journey:{
-  h1:"من تجمع صحي واحد إلى منصة وطنية.",
-  sub:"كيف تحولت خطوة مجموعة سعودية نحو التقنية الصحية إلى ساند للصحة، وكيف أصبحت ساند للصحة توينز هيلث.",
+  h1:"من رعايةٍ متفرّقة إلى قيمةٍ محقّقة.",
+  sub:"تعرّف على رحلة توينز هيلث في تطوير الحلول الصحية الرقمية، والتي أدت إلى إنشاء منصتها الرائدة \"ساند للصحة\" التي تهدف إلى ربط خدمات الرعاية الصحية، وتمكين الفرق الطبية، والمساهمة في تحسين النتائج الصحية.",
   ms:[["1982","1982","تأسيس مجموعة العبيكان للاستثمار","تبدأ العبيكان بناء الأعمال في السعودية، وتنمو من التصنيع والتعليم إلى مجموعة لها 16 مكتبًا حول العالم و20 مصنعًا وأكثر من 3,000 موظف. وتصبح أربعة عقود من إرث المجموعة الأساس لخطوتها اللاحقة نحو الرعاية الصحية."],
-      ["2021","2021","العبيكان الصحية تدخل مجال التقنية الصحية","تُنشأ العبيكان الصحية بوصفها ذراع المجموعة للصحة الرقمية والتقنية الطبية، بتكليف بالشراكة والابتكار المشترك والاستثمار في حلول تحقق قيمة مشتركة للمريض وجهة التأمين ومقدم الخدمة. وتضيف شراكات دولية مع IBM Watson Health (لاحقًا Merative) وAda Health وMaterialise دعم القرار بالذكاء الاصطناعي وتقييم الأعراض والتخطيط الجراحي ثلاثي الأبعاد إلى المحفظة. وتُطلق ساند للصحة في العام نفسه لحل مشكلة واضحة: تجزؤ الرعاية."],
+      ["2019","2019","دخول مجموعة العبيكان للاستثمار إلى قطاع تقنيات الرعاية الصحية","أسست مجموعة العبيكان للاستثمار ذراعها المتخصصة في الصحة الرقمية والتقنيات الطبية، بهدف بناء الشراكات، والتطوير المشترك، والاستثمار في الحلول التي تحقق قيمة مشتركة للمرضى، والجهات المتعاقدة، ومقدمي الرعاية الصحية."],
       ["2021","أكتوبر 2021","إدارة حالات الأمراض المزمنة مع تجمع الرياض الصحي الأول","يُطبق نظام ساند لإدارة الحالات مع تجمع الرياض الصحي الأول التابع لوزارة الصحة. ويُسجل أكثر من 2,000 مريض حقيقي بخطط رعاية نشطة، ويبدأ 25 مدير رعاية مدربًا العمل مع خطة للوصول إلى 150، ويُقرر توسيع التغطية إلى 27 مركزًا للرعاية الصحية الأولية. ويصبح هذا التطبيق الموقع المرجعي لكل ما يتبعه."],
       ["2022","نوفمبر 2021 إلى الربع الأول من 2022","المراقبة عن بُعد والرعاية الافتراضية","تنطلق إدارة الأمراض المزمنة مع المراقبة عن بُعد وزيارات الرعاية المنزلية والاستشارات الافتراضية مع TCS. وتليها الرعاية الافتراضية مع وزارة الصحة، بما يشمل خدمات الصحة النفسية واستشارات الرأي الثاني. وتدعم ساند الآن ستة مسارات سريرية بسجل طبي إلكتروني عبر الويب وتطبيق للمرضى ووصفة إلكترونية وتكامل مع الأجهزة القابلة للارتداء وخطط رعاية قائمة على الذكاء الاصطناعي."],
       ["2022","يناير 2022","ساند للصحة تُسمى المنصة الرئيسية","تضع أطروحة الشراكة للعبيكان الصحية المجموعة في موقع مسرّع للصحة الرقمية في الشرق الأوسط، وتسمي ساند للصحة منصتها الرئيسية التي تربط المرضى ومقدمي الخدمات وجهات التأمين عبر الرعاية المنزلية والطب عن بُعد وإدارة الأمراض المزمنة والرعاية الاجتماعية وصحة السكان. ويضيف مفهوم مركز قيادة ساند المراقبة المركزية وتعبئة الكادر السريري إلى المنصة. ويُصمم مشروع ثانٍ، wasfatynow، لتوصيل الوصفات الإلكترونية من نظام وصفتي الوطني إلى منازل المرضى."],
@@ -165,6 +165,6 @@ ar:{
  META:{about:"تبني توينز هيلث المنصات التي تربط مقدمي الخدمات وجهات التأمين والجهات الحكومية والمرضى حول سجل مريض موحد، ليحصل كل مريض على رعاية منسقة.",
        team:"يبني ساند للصحة أشخاص يفهمون العيادة والبرمجة معًا، ويقيسون عملهم بما يتغير للمرضى.",
        leadership:"يجمع فريق قيادتنا بين إرث المجموعة وخبرة التحول السريري والتجربة العملية في تقديم الصحة الرقمية على المستوى الوطني.",
-       history:"كيف تحولت خطوة مجموعة سعودية نحو التقنية الصحية إلى ساند للصحة، وكيف أصبحت ساند للصحة توينز هيلث."}
+       history:"تعرّف على رحلة توينز هيلث في تطوير الحلول الصحية الرقمية، والتي أدت إلى إنشاء منصتها الرائدة \"ساند للصحة\" التي تهدف إلى ربط خدمات الرعاية الصحية، وتمكين الفرق الطبية، والمساهمة في تحسين النتائج الصحية."}
 }};
 export default CO;

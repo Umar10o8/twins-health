@@ -5,7 +5,7 @@ import { L, useLang, coLink, CO_KEYS } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
 import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
-import { Twin, Count } from '../components/graphics.jsx';
+import { Twin, Count, ScaleNet } from '../components/graphics.jsx';
 import { NotFound } from './Main.jsx';
 
 const RM = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -89,7 +89,7 @@ export function History() {
     <section className="sec jr"><div className="wrap">
       <nav className="jr-years" aria-label={c.jumpTo}><span>{c.jumpTo}</span>{years.filter(y => y !== 'today').map(y => <a key={y} href={'#ms-' + y} dir="ltr" onClick={e => jump(e, y)}>{y}</a>)}</nav>
       <ol className="jr-line">{j.ms.map((m, i) => <Milestone key={i} m={m} i={i} first={j.ms.findIndex(x => x[0] === m[0]) === i} />)}</ol>
-      <div className="jr-today rv"><Pattern /><div><p className="eyebrow">{c.journeyL}</p><h2>{j.todayT}</h2><p>{j.today}</p></div><img className="jr-today-photo" src={IMG.overhead} alt="" width="1441" height="1800" loading="lazy" /></div>
+      <div className="jr-today rv"><Pattern /><div><p className="eyebrow">{c.journeyL}</p><h2>{j.todayT}</h2><p>{j.today}</p></div><ScaleNet /></div>
     </div></section>
     <Cta />
   </>;
