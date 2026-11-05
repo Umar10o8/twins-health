@@ -152,13 +152,23 @@ function Footer() {
   );
 }
 
+/* Page key for page-specific motion in site.css: home, about, solutions, solution, innovation, leadership, contact, co-about, team, history */
+function pageKey(pathname) {
+  const [a, b] = pathname.replace(/^\/(ar|en)(?=\/|$)/, '').split('/').filter(Boolean);
+  if (!a) return 'home';
+  if (a === 'company') { const k = b === undefined ? 'about' : CO_KEYS[b]; return k === 'about' ? 'co-about' : k || 'other'; }
+  if (a === 'solutions' && b) return 'solution';
+  return a;
+}
+
 export default function Layout({ children }) {
   const { t } = useLang();
+  const { pathname } = useLocation();
   const focusTitle = () => { const h = document.getElementById('pageTitle'); (h || document.getElementById('app')).focus(); };
   return <>
     <button className="skip" type="button" onClick={focusTitle}>{t.skip}</button>
     <Header />
-    <main id="app" tabIndex={-1}>{children}</main>
+    <main id="app" tabIndex={-1} data-page={pageKey(pathname)}>{children}</main>
     <Footer />
   </>;
 }

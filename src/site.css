@@ -969,3 +969,87 @@ html[dir=rtl] .frag-lines{transform:scaleX(-1)}
   .shead.in .mw{opacity:1;transform:none;filter:none}
 }
 @keyframes mw-in{from{opacity:0;transform:translateY(.55em);filter:blur(6px)}}
+
+/* ---------- page-specific motion (main[data-page] is set in Layout.jsx) ---------- */
+main{--dir:1}
+html[dir=rtl] main{--dir:-1}
+@media (prefers-reduced-motion:no-preference){
+  /* shared on inner pages: vision slides in from one side, mission from the other */
+  main:not([data-page=home]) .vm.rv.in > .card{animation:slide-s .8s var(--ease) backwards}
+  main:not([data-page=home]) .vm.rv.in > .card + .card{animation-name:slide-e;animation-delay:.12s}
+
+  /* Solutions: platform copy and dashboard come in from opposite sides, solution cards flip up */
+  [data-page=solutions] .platform .split > .rv.in:first-child{animation:slide-s .8s var(--ease) backwards}
+  [data-page=solutions] .platform .split > .rv.in:last-child{animation:zoom-e .9s var(--ease) .1s backwards}
+  [data-page=solutions] .grid > .rv.in{animation-name:flip-up;animation-duration:.8s;transform-origin:50% 0}
+  [data-page=solutions] .sol-card.in .ic{animation:pop .6s var(--ease) .35s backwards}
+
+  /* Single solution: features zoom in, side cards slide in one after another */
+  [data-page=solution] .product-videos video{animation:blur-in 1s var(--ease) .2s backwards}
+  [data-page=solution] .grid > .rv.in{animation-name:zoom-in}
+  [data-page=solution] .saned-card.rv.in{animation:slide-s .8s var(--ease) backwards}
+  [data-page=solution] .sd .side > *{animation:slide-e .8s var(--ease) backwards}
+  [data-page=solution] .sd .side > :nth-child(1){animation-delay:.3s}[data-page=solution] .sd .side > :nth-child(2){animation-delay:.42s}[data-page=solution] .sd .side > :nth-child(3){animation-delay:.54s}
+
+  /* Innovation: volume slides in, the arrow pops and nudges, value slides in from the other side */
+  [data-page=innovation] .vv.rv.in > .card{animation:slide-s .8s var(--ease) backwards}
+  [data-page=innovation] .vv.rv.in > .card.val{animation-name:slide-e;animation-delay:.35s}
+  [data-page=innovation] .vv.rv.in > .arr{animation:pop .6s var(--ease) .2s backwards}
+  [data-page=innovation] .vv.rv.in > .arr svg{animation:nudge 1.8s ease-in-out 1s infinite}
+  [data-page=innovation] .grid.g3 > .rv.in{animation-name:swing;animation-duration:.85s}
+  [data-page=innovation] .innovation-visual.rv.in{animation:zoom-in 1s var(--ease) backwards}
+  [data-page=innovation] .list.rv.in > .item{animation-name:slide-s}
+
+  /* Leadership / Our Management: photos open like a curtain, the quote comes into focus */
+  [data-page=leadership] .ceo.rv.in .ph img{animation:curtain 1.2s var(--ease) backwards}
+  [data-page=leadership] .ceo.rv.in > div:last-child > *{animation:rv-up .7s var(--ease) backwards}
+  [data-page=leadership] .ceo.rv.in > div:last-child > :nth-child(2){animation-delay:.1s}[data-page=leadership] .ceo.rv.in > div:last-child > :nth-child(3){animation-delay:.2s}
+  [data-page=leadership] .ceo.rv.in blockquote{animation:blur-in 1.1s var(--ease) .35s backwards}
+  [data-page=leadership] .grid > .person.rv.in{animation-name:blur-in;animation-duration:.9s}
+  [data-page=leadership] .person.rv.in .ph img{animation:curtain 1.1s var(--ease) .1s backwards}
+
+  /* About: values zoom in, timeline dots pop, partnership cards flip up */
+  [data-page=about] .grid.g5 > .rv.in{animation-name:zoom-in}
+  [data-page=about] .grid.g3 > .rv.in{animation-name:flip-up;animation-duration:.8s;transform-origin:50% 0}
+  [data-page=about] .timeline > .rv.in .dot{animation:pop .6s var(--ease) .15s backwards}
+  [data-page=about] .story-photo.rv.in{animation:zoom-e 1s var(--ease) backwards}
+
+  /* Company About Us: capabilities come into focus, stats pop, Vision 2030 slides in */
+  [data-page=co-about] .grid.g3 > .rv.in{animation-name:blur-in;animation-duration:.9s}
+  [data-page=co-about] .grid.g5 > .rv.in{animation-name:zoom-in}
+  [data-page=co-about] .badges > .rv.in{animation-name:flip-up;animation-duration:.8s;transform-origin:50% 0}
+  [data-page=co-about] .glance-grid.rv.in > .stat{animation:pop .7s var(--ease) backwards}
+  [data-page=co-about] .glance-grid.rv.in > .stat:nth-child(2){animation-delay:.1s}[data-page=co-about] .glance-grid.rv.in > .stat:nth-child(3){animation-delay:.2s}[data-page=co-about] .glance-grid.rv.in > .stat:nth-child(n+4){animation-delay:.3s}
+  [data-page=co-about] .v2030 .split > .rv.in:first-child{animation:slide-s .8s var(--ease) backwards}
+  [data-page=co-about] .v2030 .split > .rv.in:last-child{animation:slide-e .8s var(--ease) .15s backwards}
+  [data-page=co-about] .co-art.rv.in img{animation:curtain 1.2s var(--ease) backwards}
+
+  /* Our Team: cards come in from alternate sides, standards pop */
+  [data-page=team] .grid.g2 > .rv.in{animation-name:slide-s;animation-duration:.8s}
+  [data-page=team] .grid.g2 > .rv.in:nth-child(even){animation-name:slide-e}
+  [data-page=team] .grid.g4 > .rv.in{animation-name:swing;animation-duration:.85s}
+  [data-page=team] .team-standards > .rv.in{animation-name:pop}
+  [data-page=team] .co-art.rv.in img{animation:curtain 1.2s var(--ease) backwards}
+
+  /* Our Journey: milestones slide in from the line, dots pop */
+  [data-page=history] .jr-item.rv.in .jr-card{animation:slide-s .8s var(--ease) backwards}
+  [data-page=history] .jr-item.rv.in:nth-child(even) .jr-card{animation-name:slide-e}
+  [data-page=history] .jr-item.rv.in .jr-dot{animation:pop .6s var(--ease) .2s backwards}
+  [data-page=history] .jr-today.rv.in{animation:zoom-in 1s var(--ease) backwards}
+
+  /* Contact: details slide in one by one, form slides in from the other side */
+  [data-page=contact] .cinfo > *{animation:slide-s .8s var(--ease) backwards}
+  [data-page=contact] .cinfo > :nth-child(2){animation-delay:.08s}[data-page=contact] .cinfo > :nth-child(3){animation-delay:.16s}[data-page=contact] .cinfo > :nth-child(4){animation-delay:.24s}[data-page=contact] .cinfo > :nth-child(n+5){animation-delay:.32s}
+  [data-page=contact] .contact > .card{animation:slide-e .9s var(--ease) .2s backwards}
+}
+@keyframes slide-s{from{opacity:0;transform:translateX(calc(var(--dir) * -48px))}}
+@keyframes slide-e{from{opacity:0;transform:translateX(calc(var(--dir) * 48px))}}
+@keyframes zoom-e{from{opacity:0;transform:translateX(calc(var(--dir) * 40px)) scale(.94)}}
+@keyframes zoom-in{from{opacity:0;transform:scale(.88)}}
+@keyframes flip-up{from{opacity:0;transform:perspective(900px) rotateX(-32deg) translateY(28px)}}
+@keyframes swing{from{opacity:0;transform:translateY(32px) rotate(calc(var(--dir) * -4deg))}}
+@keyframes blur-in{from{opacity:0;filter:blur(12px);transform:scale(1.03)}}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.08)}100%{transform:none}}
+@keyframes curtain{from{clip-path:inset(100% 0 0 0);transform:scale(1.15)}to{clip-path:inset(0);transform:none}}
+@keyframes nudge{50%{translate:calc(var(--dir) * 6px) 0}}
+@media (max-width:760px){[data-page=innovation] .vv.rv.in > .arr svg{animation:none}}
