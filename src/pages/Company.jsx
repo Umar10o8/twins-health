@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { L, useLang, coLink, CO_KEYS } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
-import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
+import { Pattern, Banner, SHead, ScrollText, Cta, IconCard, BadgeCard, VisionMission, usePageMeta } from '../components/common.jsx';
 import { Twin, Count, ScaleNet } from '../components/graphics.jsx';
 import { NotFound } from './Main.jsx';
 
@@ -29,7 +29,7 @@ function AboutUs() {
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.valuesT} /><div className="grid g5">{a.values.map((v, i) => <IconCard key={i} item={v} />)}</div></div></section>
     <section className="sec v2030"><Pattern /><div className="wrap" style={{ position: 'relative' }}><div className="split" style={{ alignItems: 'center' }}><div className="rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2" style={{ color: '#fff' }}>{a.v2030T}</h2></div><p className="rv co-light">{a.v2030}</p></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.mocT} /><div className="moc"><div className="big rv"><b><Count value="42" /></b><span>{a.mocBig}</span></div><div className="card rv co-text"><p>{a.moc}</p></div></div></div></section>
-    <section className="sec alt"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.aiT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{a.ai}</p></div><div className="rv"><Twin /></div></div></section>
+    <section className="sec alt"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.aboutUs}</p><h2 className="h2">{a.aiT}</h2><ScrollText className="lead" style={{ marginTop: '1rem' }} text={a.ai} /></div><div className="rv"><Twin /></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.aboutUs} h2={a.qT} /><div className="grid g4 badges">{a.q.map((b, i) => <BadgeCard key={i} item={b} logo={BADGE_LOGOS[i]} />)}</div></div></section>
     <section className="cta co-cta"><div className="wrap"><div><h2>{a.ctaT}</h2><p>{a.ctaP}</p><L className="btn btn-primary" to="/contact">{a.ctaBtn} <Arr /></L></div>
       <address className="co-addr"><a href="mailto:sales@twinshealth.sa"><Icon name="mail" /><span>sales@twinshealth.sa</span></a><a href="tel:+966115001950"><Icon name="phone" /><span dir="ltr">+966 11 500 1950</span></a><span><Icon name="map-pin" /><span>{a.address}</span></span></address></div></section>
@@ -41,7 +41,7 @@ export function Team() {
   usePageMeta(c.TITLES.team, c.META.team);
   return <>
     <CoBanner label={c.teamL} h1={m.h1} sub={m.sub} />
-    <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.teamL}</p><h2 className="h2">{m.whoT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{m.who}</p></div><div className="rv co-art"><img className="co-photo team-photo" src={IMG.brandTablet} alt="" width="1100" height="1320" loading="lazy" /></div></div></section>
+    <section className="sec"><div className="wrap split" style={{ alignItems: 'center' }}><div className="prose rv"><p className="eyebrow">{c.teamL}</p><h2 className="h2">{m.whoT}</h2><ScrollText className="lead" style={{ marginTop: '1rem' }} text={m.who} /></div><div className="rv co-art"><img className="co-photo team-photo" src={IMG.brandTablet} alt="" width="1100" height="1320" loading="lazy" /></div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.bringT} /><div className="grid g2">{m.bring.map((b, i) => <IconCard key={i} item={b} className="co-cap" />)}</div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.howT} /><div className="grid g4">{m.how.map((h, i) => <IconCard key={i} item={h} />)}</div></div></section>
     <section className="sec tint"><div className="wrap"><SHead eyebrow={c.teamL} h2={m.stdT} p={m.std} /><ul className="team-standards">{c.about.q.map(([icon, label]) => <li className="card rv" key={label}><Icon name={icon} /><span>{label}</span></li>)}</ul></div></section>
@@ -53,7 +53,7 @@ function Management() {
   const { co: c, q } = useLang(), g = c.mgmt;
   return <>
     <CoBanner label={c.mgmtL} h1={g.h1} sub={g.sub} />
-    <section className="sec"><div className="wrap"><p className="lead co-intro rv">{g.intro}</p></div></section>
+    <section className="sec sec-intro"><div className="wrap"><ScrollText className="lead co-intro" text={g.intro} /></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={c.mgmtL} h2={g.groupT} /><div className="card ceo rv"><div className="ph"><img src={IMG.ao} alt={g.ceoName} width="480" height="480" /></div><div><h3 style={{ fontSize: '1.75rem' }}>{g.ceoName}</h3><p className="role">{g.ceoRole}</p><blockquote>{q(g.quote)}</blockquote></div></div></div></section>
     <section className="sec"><div className="wrap"><SHead eyebrow={c.mgmtL} h2={g.teamT} /><div className="grid g5">{g.team.map((p, i) => <div className={'person card rv' + (i ? '' : ' lead')} key={p[0]}><div className="ph"><img src={IMG[p[2]]} alt={p[0]} width="480" height="480" loading="lazy" /></div><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div></div></section>
     <Cta />

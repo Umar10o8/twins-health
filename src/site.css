@@ -894,10 +894,10 @@ html[dir=rtl] .df-lines{transform:scaleX(-1)}
 .frag-lines{position:absolute;inset:0;width:100%;height:100%}
 html[dir=rtl] .frag-lines{transform:scaleX(-1)}
 .frag-lines path{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 5;vector-effect:non-scaling-stroke;opacity:.55}
-.frag-patient{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:.4rem;width:6rem}
-.frag-patient svg{width:3.6rem;height:auto;fill:var(--sea)}
+.frag-patient{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:.5rem;width:7rem}
+.frag-patient svg{width:4.6rem;height:auto;fill:var(--sea)}
 .frag-patient b{padding:.15rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.75rem;white-space:nowrap}
-.frag-card{--acc:var(--teal);position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.4rem .5rem;width:clamp(7.5rem,6rem + 5vw,10rem);padding:.65rem .75rem;border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
+.frag-card{--acc:var(--teal);position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.4rem .5rem;width:clamp(8rem,6.5rem + 4vw,10.5rem);padding:.7rem .8rem;border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
 .frag-card.f0{--rot:-4deg;--fx:-8px;--fy:-6px}
 .frag-card.f1{--acc:var(--sea);--rot:3deg;--fx:8px;--fy:-4px}
 .frag-card.f2{--acc:var(--navy);--rot:-2deg;--fx:-6px;--fy:6px}
@@ -954,3 +954,18 @@ html[dir=rtl] .frag-lines{transform:scaleX(-1)}
 .b-art .hv-glow{inset:24%}
 .banner .wrap > div{position:relative;max-width:min(52rem,62%)}
 @media (max-width:760px){.b-art{width:20rem;inset-inline-end:-10rem;opacity:.18}.banner .wrap > div{max-width:none}}
+
+/* ---------- motion type and scroll-lit text (all pages; strongest on inner pages) ---------- */
+.mw{display:inline-block}
+.scroll-text .sw{opacity:.16;transition:opacity .35s var(--ease)}
+.scroll-text .sw.on{opacity:1}
+/* intro statement sits close under the page header instead of in its own padded band */
+.sec-intro{padding-bottom:0!important}
+.sec-intro .co-intro{max-width:60rem;font-size:clamp(1.35rem,1.05rem + 1.1vw,2rem);line-height:1.5;font-weight:500;letter-spacing:-.01em}
+@media (prefers-reduced-motion:no-preference){
+  .banner .wrap > div > h1{animation:none}
+  .banner h1 .mw{animation:mw-in .75s var(--ease) backwards;animation-delay:calc(.1s + var(--i) * 70ms)}
+  .shead .mw{opacity:0;transform:translateY(.55em);filter:blur(6px);transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease);transition-delay:calc(var(--i) * 55ms)}
+  .shead.in .mw{opacity:1;transform:none;filter:none}
+}
+@keyframes mw-in{from{opacity:0;transform:translateY(.55em);filter:blur(6px)}}

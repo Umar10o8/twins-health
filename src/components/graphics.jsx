@@ -177,7 +177,7 @@ export function DataFlow() {
 
 /* About, our story: one patient, with medical, mental and social records in separate systems that don't connect.
    Card centres and break points are in % of the box (mirrored for Arabic); the SVG lines use the same 0-100 coordinates. */
-const FRAG = [{ c: [20, 18], m: [35, 34] }, { c: [80, 38], m: [65, 44] }, { c: [27, 82], m: [34, 72] }];
+const FRAG = [{ c: [30, 22], m: [40, 36] }, { c: [72, 40], m: [61, 45] }, { c: [33, 79], m: [38, 70] }];
 export function Fragmented() {
   const { t, lang } = useLang(), v = t.viz.frag, X = x => (lang === 'ar' ? 100 - x : x) + '%';
   return (

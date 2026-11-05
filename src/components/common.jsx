@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { L, useLang } from '../i18n.jsx';
 import { Icon, Arr, SOL_ICON } from '../icons.jsx';
@@ -6,6 +6,34 @@ import { IMG, SITE_URL } from '../config.js';
 import { TWatermark, BannerArt } from './graphics.jsx';
 
 export const Pattern = () => <div className="pattern" aria-hidden="true" />;
+
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const split = (text, cls, style) => text.split(/(\s+)/).map((w, i) => (/^\s*$/.test(w) ? w : <span className={cls} key={i} style={style?.(i / 2)}>{w}</span>));
+
+/* Motion type: the words of a title rise in one after another (page titles on load, section headings when revealed) */
+export const Words = ({ text }) => (typeof text === 'string' ? split(text, 'mw', i => ({ '--i': i })) : text);
+
+/* Large paragraph whose words go from faint to dark as it scrolls up through the view */
+export function ScrollText({ text, className = '', style }) {
+  const ref = useRef();
+  useEffect(() => {
+    const el = ref.current, words = el.querySelectorAll('.sw');
+    if (RM) { words.forEach(w => w.classList.add('on')); return; }
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect(), vh = innerHeight, atEnd = scrollY + vh >= document.documentElement.scrollHeight - 2;
+      const p = atEnd ? 1 : Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35)));
+      const n = Math.round(p * words.length);
+      words.forEach((w, i) => w.classList.toggle('on', i < n));
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    addEventListener('scroll', on, { passive: true }); addEventListener('resize', on);
+    return () => { removeEventListener('scroll', on); removeEventListener('resize', on); cancelAnimationFrame(raf); };
+  }, [text]);
+  return <p ref={ref} className={'scroll-text ' + className} style={style}>{split(text, 'sw')}</p>;
+}
 
 /* Per-route <title>, meta description, canonical and hreflang */
 export function usePageMeta(title, desc) {
@@ -35,12 +63,12 @@ export function Banner({ crumbs, h1, lede, children }) {
           ? <li key={i} aria-current="page">{c[0]}</li>
           : <li key={i}><L to={c[1]}>{c[0]}</L></li>)}
       </ol></nav>
-      <h1 id="pageTitle" tabIndex={-1}>{h1}</h1>{lede && <p className="lede">{lede}</p>}{children}</div></div></section>
+      <h1 id="pageTitle" tabIndex={-1}><Words text={h1} /></h1>{lede && <p className="lede">{lede}</p>}{children}</div></div></section>
   );
 }
 
 export const SHead = ({ eyebrow, h2, p, center }) => (
-  <div className={'shead' + (center ? ' center' : '') + ' rv'}><p className="eyebrow">{eyebrow}</p><h2>{h2}</h2>{p && <p>{p}</p>}</div>
+  <div className={'shead' + (center ? ' center' : '') + ' rv'}><p className="eyebrow">{eyebrow}</p><h2><Words text={h2} /></h2>{p && <p>{p}</p>}</div>
 );
 
 export function Cta() {

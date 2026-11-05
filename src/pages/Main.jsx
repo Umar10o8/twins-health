@@ -2,7 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { L, useLang, Html } from '../i18n.jsx';
 import { Icon, Arr } from '../icons.jsx';
 import { IMG, BADGE_LOGOS } from '../config.js';
-import { Pattern, Banner, SHead, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
+import { Pattern, Banner, SHead, ScrollText, Cta, IconCard, BadgeCard, VisionMission, Ticks, SolCard, ProductVideo, usePageMeta } from '../components/common.jsx';
 import { HeroVisual, Dashboard, Insights, Count, TWatermark, DataFlow, Fragmented } from '../components/graphics.jsx';
 
 const useMeta = key => { const { t } = useLang(); usePageMeta(t.TITLES[key], t.META[key]); };
@@ -69,7 +69,7 @@ export function About() {
     <Banner crumbs={[[t.about]]} h1={t.aboutH1} lede={t.aboutLede} />
     <section className="sec"><div className="wrap">
       <div className="split story-grid">
-        <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><p className="lead" style={{ marginTop: '1rem' }}>{t.storyP1}</p><p>{t.storyP2}</p></div>
+        <div className="prose rv"><p className="eyebrow">{t.storyEyebrow}</p><h2 className="h2">{t.storyT}</h2><ScrollText className="lead" style={{ marginTop: '1rem' }} text={t.storyP1} /><p>{t.storyP2}</p></div>
         <div className="rv story-photo"><Fragmented /></div>
       </div>
       <VisionMission className="co-vm story-vm" vT={t.visionT} v={t.visionP} mT={t.missionT} m={t.missionP} />
@@ -140,7 +140,7 @@ export function Innovation() {
       <h3 style={{ fontSize: '1.25rem', margin: '3rem 0 1.25rem' }}>{t.vbcHowT}</h3>
       <div className="grid g3">{t.vbc.map((v, i) => <div className="card rv" key={i}><span className="ic"><Icon name={v[0]} /></span><h4 style={{ fontSize: '1.05rem', marginBottom: '.4rem' }}>{v[1]}</h4><p>{v[2]}</p></div>)}</div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={t.aiEyebrow} h2={t.aiT} p={t.aiLede} />
-      <div className="split" style={{ alignItems: 'center' }}><div className="rv innovation-visual"><DataFlow /></div><div className="prose rv"><p className="lead">{t.aiP1}</p><p>{t.aiP2}</p></div></div>
+      <div className="split" style={{ alignItems: 'center' }}><div className="rv innovation-visual"><DataFlow /></div><div className="prose rv"><ScrollText className="lead" text={t.aiP1} /><p>{t.aiP2}</p></div></div>
       <div className="grid g2" style={{ marginTop: '2.5rem' }}><ListCard title={t.todayT} items={t.today} /><ListCard title={t.nextT} items={t.nextL} className="next" /></div></div></section>
     <Cta />
   </>;
@@ -151,7 +151,7 @@ export function Leadership() {
   useMeta('leadership');
   return <>
     <Banner crumbs={[[t.leadership]]} h1={t.leadH1} lede={t.leadLede} />
-    <section className="sec"><div className="wrap"><p className="lead co-intro rv">{co.mgmt.intro}</p></div></section>
+    <section className="sec sec-intro"><div className="wrap"><ScrollText className="lead co-intro" text={co.mgmt.intro} /></div></section>
     <section className="sec"><div className="wrap"><div className="card ceo rv"><div className="ph"><img src={IMG.ao} alt={t.ceoName} width="480" height="480" /></div><div><p className="eyebrow">{t.ceoLabel}</p><h2>{t.ceoName}</h2><p className="role">{t.ceoOrg}</p><blockquote>{q(D.QUOTE)}</blockquote></div></div></div></section>
     <section className="sec alt"><div className="wrap"><SHead eyebrow={t.teamEyebrow} h2={t.teamT} /><div className="grid g5">{D.TEAM.map(m => <div className={'person card rv' + (m[3] ? ' lead' : '')} key={m[0]}><div className="ph"><img src={IMG[m[2]]} alt={m[0]} width="480" height="480" loading="lazy" /></div><h3>{m[0]}</h3><p>{m[1]}</p></div>)}</div></div></section>
     <Cta />
