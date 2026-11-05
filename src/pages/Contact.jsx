@@ -26,7 +26,7 @@ function DemoForm({ product }) {
     e.preventDefault();
     if (busy) return;
     const form = formRef.current, f = Object.fromEntries(new FormData(form));
-    const ok = { name: !!(f.name || '').trim(), email: /^\S+@\S+\.\S+$/.test(f.email || ''), phone: /[0-9]{6,}/.test((f.phone || '').replace(/\D/g, '')), consent: !!f.consent };
+    const ok = { name: !!(f.name || '').trim(), email: /^\S+@\S+\.\S+$/.test(f.email || ''), phone: /[0-9]{6,}/.test((f.phone || '').replace(/\D/g, '')), message: !!(f.message || '').trim(), consent: !!f.consent };
     const bad = Object.keys(ok).filter(k => !ok[k]);
     setInvalid(Object.fromEntries(bad.map(k => [k, true])));
     setSent(false);
@@ -43,7 +43,7 @@ function DemoForm({ product }) {
           subject: 'New demo request: ' + f.name + (f.org ? ' (' + f.org + ')' : ''),
           from_name: 'Twins Health website',
           name: f.name, organization: f.org || '-', email: f.email, phone: f.phone,
-          solution: preset ? preset.name : '-', message: f.message || '-', language: lang, page: location.href,
+          solution: preset ? preset.name : '-', message: f.message, language: lang, page: location.href,
         }),
       });
       const res = await r.json().catch(() => ({}));
@@ -64,7 +64,7 @@ function DemoForm({ product }) {
       <div><label htmlFor="fOrg">{t.fOrg}</label><input id="fOrg" name="org" autoComplete="organization" /></div>
       <div><label htmlFor="fEmail">{t.fEmail}<Req /></label><input id="fEmail" name="email" type="email" autoComplete="email" dir="ltr" required {...inv('email')} onInput={clear('email')} /></div>
       <div><label htmlFor="fPhone">{t.fPhone}<Req /></label><input id="fPhone" name="phone" type="tel" autoComplete="tel" dir="ltr" required {...inv('phone')} onInput={clear('phone')} /></div>
-      <div className="full"><label htmlFor="fMsg">{t.fMsg}</label><textarea id="fMsg" name="message" placeholder={t.fMsgPh} /></div>
+      <div className="full"><label htmlFor="fMsg">{t.fMsg}<Req /></label><textarea id="fMsg" name="message" placeholder={t.fMsgPh} required {...inv('message')} onInput={clear('message')} /></div>
       <div className="full"><label className="consent"><input type="checkbox" id="fConsent" name="consent" required {...inv('consent')} onChange={clear('consent')} /><span><Html html={t.consentHTML} /><Req /></span></label></div>
       <div className="full" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}><button className="btn btn-primary" type="submit" disabled={busy}>{t.submit} <Arr /></button><p className={'form-msg' + msg.cls} id="formMsg" role="status" aria-live="polite">{msg.text}</p></div>
       <div className={'sent' + (sent ? ' on' : '')} id="formSent" tabIndex={-1} ref={sentRef}><b>{t.sentB}</b><Html html={t.sentP} /></div>
